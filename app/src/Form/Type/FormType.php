@@ -1,6 +1,6 @@
 <?php
 /**
- * Category type.
+ * Form type.
  */
 
 namespace App\Form\Type;
@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class CategoryType.
  */
-class CategoryType extends AbstractType
+class FormType extends AbstractType
 {
     /**
      * Builds the form.
@@ -29,13 +29,13 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'title',
-            TextType::class,
-            [
-                'label' => 'label.title',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]);
+        'title',
+        TextType::class,
+        [
+            'label' => 'label.title',
+            'required' => true,
+            'attr' => ['max_length' => 64],
+        ]);
     }
 
     /**

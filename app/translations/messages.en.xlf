@@ -66,7 +66,54 @@
          <source>label.category</source>
          <target>Category</target>
        </trans-unit>
-
+        <trans-unit id="title.category_list">
+           <source>title.category_list</source>
+           <target>Category list</target>
+       </trans-unit>
+       <trans-unit id="title.category_details">
+          <source>title.category_details</source>
+          <target>Category details</target>
+        </trans-unit>
+        <trans-unit id="title.category_create">
+          <source>title.category_create</source>
+           <target>Creating category</target>
+        </trans-unit>
+        <trans-unit id="action.save">
+           <source>action.save</source>
+           <target>Save</target>
+        </trans-unit>
+        <trans-unit id="message.created_successfully">
+          <source>message.created_successfully</source>
+          <target>Created succesfully</target>
+        </trans-unit>
+        <trans-unit id="title.category_edit">
+          <source>title.category_edit</source>
+          <target>Editing category</target>
+        </trans-unit>
+        <trans-unit id="title.category_delete">
+          <source>title.category_delete</source>
+          <target>Deleting category</target>
+        </trans-unit>
+        <trans-unit id="action.delete">
+          <source>action.delete</source>
+          <target>Delete</target>
+        </trans-unit>
+         <trans-unit id="message.deleted_successfully">
+           <source>message.deleted_successfully</source>
+           <target>Deleted succesfully</target>
+         </trans-unit>
+         <trans-unit id="action.create_category">
+           <source>action.create_category</source>
+           <target>Create category</target>
+         </trans-unit>
+          <trans-unit id="action.back_to_category_list">
+             <source>action.back_to_category_list</source>
+             <target>Back to category list</target>
+          </trans-unit>
+          <trans-unit id="action.edit">
+             <source>action.edit</source>
+             <target>Edit</target>
+          </trans-unit>
     </body>
   </file>
 </xliff>

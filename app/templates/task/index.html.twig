@@ -8,9 +8,12 @@
     <h1>{{ 'title.task_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
+
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
+
+        <h2><a href="/task/create" title="{{ 'action.create_task'|trans }}">  {{ 'action.create_task'|trans }}</a></h2>
 
         <table class="table table-striped">
             <thead>
@@ -20,6 +23,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.title') }}</th>
+                <th>{{  'label.tag'}}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -31,9 +35,19 @@
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
                     <td>{{ task.category.title }}</td>
+                    <td> {% for tag in task.tags %}
+                               {{ tag.title}}
+                        {% endfor %}
+                    </td>
                     <td>
                         <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}
+                        </a>
+                        <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
+                        <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}">
+                            {{ 'action.delete'|trans }}
                         </a>
                     </td>
                 </tr>
@@ -47,7 +61,10 @@
 
     {% else %}
         <p>
-            {{ 'message.empty_list'|trans }}
+            {% include 'default/_single_alert_message.html.twig' with {
+                type: 'warning',
+                message: 'message.empty_list'|trans
+            } %}
         </p>
     {% endif %}
 {% endblock %}

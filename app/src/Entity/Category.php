@@ -8,16 +8,15 @@ namespace App\Entity;
 use App\Repository\CategoryRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Category.
- *
- * @psalm-suppress MissingConstructor
  */
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 #[ORM\Table(name: 'categories')]
-#[ORM\UniqueConstraint(name: 'uq_categories_title', columns: ['title'])]
 #[UniqueEntity(fields: ['title'])]
 class Category
 {
@@ -29,7 +28,7 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private ?int $id = null;
+    public ?int $id = null;
 
     /**
      * Created at.
@@ -37,7 +36,9 @@ class Category
      * @var DateTimeImmutable|null
      */
     #[ORM\Column(type: 'datetime_immutable')]
-    private ?DateTimeImmutable $createdAt;
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Gedmo\Timestampable(on: 'create')]
+    public ?DateTimeImmutable $createdAt;
 
     /**
      * Updated at.
@@ -45,7 +46,9 @@ class Category
      * @var DateTimeImmutable|null
      */
     #[ORM\Column(type: 'datetime_immutable')]
-    private ?DateTimeImmutable $updatedAt;
+    #[Assert\Type(DateTimeImmutable::class)]
+    #[Gedmo\Timestampable(on: 'update')]
+    public ?DateTimeImmutable $updatedAt;
 
     /**
      * Title.
@@ -53,76 +56,42 @@ class Category
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title;
+    #[Assert\Type('string')]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3, max: 64)]
+    public ?string $title;
 
     /**
-     * Getter for Id.
+     * Slug.
      *
-     * @return int|null Id
+     * @var string|null
      */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    #[ORM\Column(type: 'string', length: 64)]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 3, max: 64)]
+    #[Gedmo\Slug(fields: ['title'])]
+    private ?string $slug;
 
-    /**
-     * Getter for created at.
-     *
-     * @return DateTimeImmutable|null Created at
-     */
-    public function getCreatedAt(): ?DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Setter for created at.
-     *
-     * @param DateTimeImmutable|null $createdAt Created at
-     */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for updated at.
-     *
-     * @return DateTimeImmutable|null Updated at
-     */
-    public function getUpdatedAt(): ?DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Setter for updated at.
-     *
-     * @param DateTimeImmutable|null $updatedAt Updated at
-     */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-    /**
-     * Getter for title.
-     *
-     * @return string|null Title
-     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * Setter for title.
-     *
-     * @param string|null $title Title
-     */
-    public function setTitle(?string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
-    }
-}
 
+        return $this;
+    }
+
+    public function setCreatedAt(DateTimeImmutable $createdAt): void
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    public function setUpdatedAt(DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+}

@@ -5,9 +5,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Task;
-use App\Form\Type\TaskType;
-use App\Service\TaskServiceInterface;
+use App\Entity\Tag;
+use App\Form\Type\TagType;
+use App\Service\TagServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,13 +18,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 /**
  * Class TaskController.
  */
-#[Route('/task')]
-class TaskController extends AbstractController
+#[Route('/tag')]
+class TagController extends AbstractController
 {
     /**
-     * Task service.
+     * Tag service.
      */
-    private TaskServiceInterface $taskService;
+    private TagServiceInterface $tagService;
 
     /**
      * Translator.
@@ -34,12 +34,12 @@ class TaskController extends AbstractController
     /**
      * Constructor.
      *
-     * @param TaskServiceInterface $taskService Task service
-     * @param TranslatorInterface  $translator  Translator
+     * @param TaskServiceInterface $tagService Tag service
+     * @param TranslatorInterface  $translator Translator
      */
-    public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator)
+    public function __construct(TagServiceInterface $tagService, TranslatorInterface $translator)
     {
-        $this->taskService = $taskService;
+        $this->tagService = $tagService;
         $this->translator = $translator;
     }
 
@@ -50,27 +50,27 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route(name: 'task_index', methods: 'GET')]
+    #[Route(name: 'tag_index', methods: 'GET')]
     public function index(Request $request): Response
     {
-        $pagination = $this->taskService->getPaginatedList(
+        $pagination = $this->tagService->getPaginatedList(
             $request->query->getInt('page', 1)
         );
 
-        return $this->render('task/index.html.twig', ['pagination' => $pagination]);
+        return $this->render('tag/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
      * Show action.
      *
-     * @param Task $task Task entity
+     * @param Tag $tag Tag entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function show(Task $task): Response
+    #[Route('/{id}', name: 'tag_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    public function show(Tag $tag): Response
     {
-        return $this->render('task/show.html.twig', ['task' => $task]);
+        return $this->render('tag/show.html.twig', ['tag' => $tag]);
     }
 
     /**
@@ -80,25 +80,25 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'tag_create', methods: 'GET|POST', )]
     public function create(Request $request): Response
     {
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task, ['action' => $this->generateUrl('task_create')]);
+        $tag = new Tag();
+        $form = $this->createForm(TagType::class, $tag, ['action' => $this->generateUrl('tag_create')]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->save($task);
+            $this->tagService->save($tag);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('tag_index');
         }
 
-        return $this->render('task/create.html.twig', [
+        return $this->render('tag/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -107,33 +107,33 @@ class TaskController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Task    $task    Task entity
+     * @param Task    $tag     Task entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function edit(Request $request, Task $task): Response
+    #[Route('/{id}/edit', name: 'tag_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Tag $tag): Response
     {
-        $form = $this->createForm(TaskType::class, $task, [
+        $form = $this->createForm(TagType::class, $tag, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('task_edit', ['id' => $task->getId()]),
+            'action' => $this->generateUrl('tag_edit', ['id' => $tag->getId()]),
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->save($task);
+            $this->tagService->save($tag);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('tag_index');
         }
 
-        return $this->render('task/edit.html.twig', [
+        return $this->render('tag/edit.html.twig', [
             'form' => $form->createView(),
-            'task' => $task,
+            'tag' => $tag,
         ]);
     }
 
@@ -141,33 +141,33 @@ class TaskController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Task    $task    Task entity
+     * @param Task    $tag     Tag entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request, Task $task): Response
+    #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request, Tag $tag): Response
     {
-        $form = $this->createForm(FormType::class, $task, [
+        $form = $this->createForm(FormType::class, $tag, [
             'method' => 'DELETE',
-            'action' => $this->generateUrl('task_delete', ['id' => $task->getId()]),
+            'action' => $this->generateUrl('tag_delete', ['id' => $tag->getId()]),
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->delete($task);
+            $this->tagService->delete($tag);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('tag_index');
         }
 
-        return $this->render('task/delete.html.twig', [
+        return $this->render('tag/delete.html.twig', [
             'form' => $form->createView(),
-            'task' => $task,
+            'tag' => $tag,
         ]);
     }
 }

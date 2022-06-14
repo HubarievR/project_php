@@ -12,9 +12,17 @@
     {% endblock %}
 </head>
 <body>
+
+
+<div class="container-fluid">
+    {% include 'default/_flash_messages.html.twig' %}
+</div>
+
+
 <main role="main" class="container-fluid">
     {% block body %}{% endblock %}
 </main>
+
 {% block javascripts %}
     <script
             src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
