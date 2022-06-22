@@ -82,6 +82,13 @@ class Task
     #[ORM\JoinTable(name: 'tasks_tags')]
     private $tags;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    private $author;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    #[Assert\Length(min: 3, max: 255)]
+    private $comment;
+
     /**
      * Constructor.
      */
@@ -210,5 +217,36 @@ class Task
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function setStatus(?User $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
     }
 }

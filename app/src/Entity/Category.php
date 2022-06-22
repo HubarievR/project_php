@@ -93,5 +93,4 @@ class Category
     {
         $this->updatedAt = $updatedAt;
     }
-
 }
