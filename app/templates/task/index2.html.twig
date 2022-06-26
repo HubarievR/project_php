@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.task_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'label.gazeta_name'|trans }}</h1>
+
+    {% if pagination is defined and pagination.items|length %}
+
+        <div class="sort_b">
+            <p>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'task.createdAt') }}</p>
+            <p>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'task.title') }}</p>
+        </div>
+
+
+        <div class="div_article">
+            {% for task in pagination.items %}
+                <div class="article">
+                    <div style="height: 100%">
+                        <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}"> {{ task.title }}</a>
+                        <div class="cat_in_art">{{ task.category.title }}</div>
+                    </div>
+                    {#<p>{% for tag in task.tags %}
+                            {{ tag.title}}
+                        {% endfor %}
+                    </p>
+                    #}
+                    <p style="position: absolute; bottom: 0; right:0; left:0; font-size: 14px;">{{'label.created_at'|trans}}: {{ task.createdAt|format_date('long') }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {% include 'default/_single_alert_message.html.twig' with {
+                type: 'warning',
+                message: 'message.empty_list'|trans
+            } %}
+        </p>
+    {% endif %}
+{% endblock %}
+

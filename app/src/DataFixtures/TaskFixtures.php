@@ -44,7 +44,8 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $task->setCategory($category);
-            $task->setComment($this->faker->sentence);
+
+            $task->setNews($this->faker->text(1000));
 
             return $task;
         });

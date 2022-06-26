@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
+
 /**
  * Class Task.
  */
@@ -22,7 +24,7 @@ class Task
 {
     /**
      * Primary key.
-     *
+     *symfony
      * @var int|null
      */
     #[ORM\Id]
@@ -82,13 +84,6 @@ class Task
     #[ORM\JoinTable(name: 'tasks_tags')]
     private $tags;
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    private $author;
-
-    #[ORM\Column(type: 'text', nullable: true)]
-    #[Assert\Length(min: 3, max: 255)]
-    private $comment;
-
     /**
      * Constructor.
      */
@@ -96,6 +91,18 @@ class Task
     {
         $this->tags = new ArrayCollection();
     }
+
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    private $author;
+
+
+
+    #[ORM\Column(type: 'text')]
+    #[Assert\Type('string')]
+    #[Assert\Length(min: 1000, max: 3000)]
+    private $news;
+
+
 
     /**
      * Getter for Id.
@@ -238,14 +245,14 @@ class Task
         return $this;
     }
 
-    public function getComment(): ?string
+    public function getNews(): ?string
     {
-        return $this->comment;
+        return $this->news;
     }
 
-    public function setComment(?string $comment): self
+    public function setNews(string $news): self
     {
-        $this->comment = $comment;
+        $this->news = $news;
 
         return $this;
     }

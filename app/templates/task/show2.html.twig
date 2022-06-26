@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.task_details'|trans({'%id%': task.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ task.title({'%id%': task.id|default('')}) }}</h1>
+    {% if task is defined and task|length %}
+
+        <div class="show_container">
+            <div>
+                {{ task.news|markdown_to_html }}
+            </div>
+
+            <p>{{ 'label.created_at'|trans }}:&emsp;{{ task.createdAt|format_date('long') }} </p>
+
+            <dt>{{ 'label.category'|trans }}</dt>
+            <dd>{{  task.category.title }}</dd>
+            <dt>{{ 'label.tag'|trans}}</dt>
+            <div class="tag_in_show">
+                {% for tag in task.tags %}
+                    {{tag.title}}
+                {% endfor %}
+            </div>
+
+        </div>
+
+        <p style="text-align: center; margin: 20px;">
+            <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
+                {{ 'action.back_to_list'|trans }}
+            </a>
+        </p>
+
+    {% else %}
+        <p>
+            {{ 'message.record_not_found'|trans }}
+        </p>
+        fefgwuywfr
+    {% endif %}
+{% endblock %}

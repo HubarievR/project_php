@@ -57,7 +57,11 @@ class TaskController extends AbstractController
             $request->query->getInt('page', 1)
         );
 
-        return $this->render('task/index.html.twig', ['pagination' => $pagination]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->render('task/index.html.twig', ['pagination' => $pagination]);
+        }
+
+        return $this->render('task/index2.html.twig', ['pagination' => $pagination]);
     }
 
     /**
@@ -70,7 +74,11 @@ class TaskController extends AbstractController
     #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     public function show(Task $task): Response
     {
-        return $this->render('task/show.html.twig', ['task' => $task]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->render('task/show.html.twig', ['task' => $task]);
+        }
+
+        return $this->render('task/show2.html.twig', ['task' => $task]);
     }
 
     /**

@@ -6,8 +6,8 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Form\Type\CategoryType;
-use App\Form\Type\FormType;
+use Form\Type\CategoryType;
+use Form\Type\FormType;
 use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

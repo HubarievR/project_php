@@ -49,11 +49,13 @@ class TaskType extends AbstractType
         $builder->add(
             'title',
             TextType::class,
-            [
+            options: [
                 'label' => 'label.title',
                 'required' => true,
                 'attr' => ['max_length' => 255],
-            ]);
+            ]
+        );
+
         $builder->add(
             'category',
             EntityType::class,
@@ -77,8 +79,20 @@ class TaskType extends AbstractType
             ]
         );
 
+
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer
+        );
+
+
+        $builder->add(
+            'news',
+            TextType::class,
+            [
+                'label' => 'label.news',
+                'required' => true,
+                'attr' => ['max_length' => 1000],
+            ]
         );
     }
 

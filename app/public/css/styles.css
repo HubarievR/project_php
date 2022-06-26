@@ -1,3 +1,137 @@
-p {
-    color: red;
+table{
+    background-color: lightgray;
+    border-collapse: inherit;
+    width: 100%;
+}
+.btn-action{
+    padding: 4px;
+    border: 1px solid black;
+    color: black;
+    text-decoration: none;
+    margin: 2%;
+}
+
+#operacje{
+    text-align: center;
+}
+
+th{
+    text-align: center;
+}
+
+.pagination{
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.float-end {
+    float: left!important;
+}
+
+.div_article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+}
+
+.article{
+    border: 1px solid darkgray;
+    background-color: lightgray;
+    width:30%;
+    height: 425px;
+    margin: 1%;
+    text-align: center;
+    border-radius: 20px;
+    position: relative;
+    display: block;
+}
+
+.article:hover{
+    border: 2px solid orange;
+}
+
+.cat_in_art{
+    position: absolute;
+    top:0;
+    margin-left: 3%;
+    margin-top: 1%;
+    border: 1px solid black;
+    border-radius: 10%;
+    padding: 1px;
+    font-size: 10px;
+}
+
+.cat_in_art:hover{
+    border-color: orange;
+    color: orange;
+}
+
+.article a{
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    padding-top: 13%;
+    font-size: 22px;
+    color: black;
+}
+
+.sort_b{
+    display:flex;
+}
+
+.sort_b a {
+    text-decoration: none;
+    color:black;
+    font-size: 18px;
+}
+
+.sort_b a:hover{
+    color:orange;
+}
+
+.sort_b p{
+    padding: 10px 10px 0px 10px;
+}
+h1{
+    text-align: center;
+}
+
+.btn_top{
+    padding: 5px 20px 20px 20px;
+    display: flex;
+    justify-content: end;
+    float: right;
+}
+
+.btn_top a{
+    text-decoration: none;
+    color: black;
+}
+
+.btn_top a:hover{
+    color: orange;
+}
+
+.cl_for_btn_top{
+    height: 50px;
+}
+
+.page-link{
+    color:black;
+}
+
+.page-item.active .page-link{
+    background-color: dimgray;
+    border-color: gray;
+}
+.page-item :hover{
+    color: orange;
+}
+
+.show_container{
+    text-align: center;
+    margin-top: 50px;
 }
