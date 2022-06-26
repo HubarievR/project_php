@@ -18,4 +18,14 @@ interface CategoryServiceInterface
      * @return bool Result
      */
     public function canBeDeleted(Category $category): bool;
+
+    /**
+     * Find by title.
+     *
+     * @param string $title Category title
+     *
+     * @return Category|null Category entity
+     */
+    public function findOneByTitle(string $title): ?Category;
 }
+

@@ -9,7 +9,7 @@
     {% if pagination is defined and pagination.items|length %}
 
 
-        <h2><a href="/task/create" title="{{ 'action.create_task'|trans }}">  {{ 'action.create_task'|trans }}</a></h2>
+        <h2 style="text-align: center; margin: 20px;"><a href="/task/create" title="{{ 'action.create_task'|trans }}">  {{ 'action.create_task'|trans }}</a></h2>
 
         <table class="table table-striped">
             <thead>
@@ -20,6 +20,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'task.title') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'category.title') }}</th>
                 <th>{{ 'label.tag'|trans}}</th>
+                <th>{{ 'label.author'|trans}}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
             </thead>
@@ -30,11 +31,12 @@
                     <td>{{ task.createdAt|format_date('long') }}</td>
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.title }}</td>
-                    <td>{{ task.category.title }}</td>
-                    <td> {% for tag in task.tags %}
+                    <td style="width: 70px;">{{ task.category.title }}</td>
+                    <td style="width: 70px;"> {% for tag in task.tags %}
                                {{ tag.title}}
                         {% endfor %}
                     </td>
+                    <td></td>
                     <td id="operacje">
                         <a class="btn-action" href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}

@@ -10,13 +10,14 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\QueryBuilder;
 use Gedmo\Mapping\Annotation as Gedmo;
+use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
-
-
 
 /**
  * Class Task.
+ * @method createQueryBuilder(string $string)
  */
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ORM\Table(name: 'tasks')]
@@ -72,7 +73,7 @@ class Task
     #[Assert\Type(Category::class)]
     #[Assert\NotBlank]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category;
+    private Category $category;
 
     /**
      * Tags.
@@ -87,20 +88,28 @@ class Task
     /**
      * Constructor.
      */
-    public function __construct()
+    #[Pure] public function __construct()
     {
         $this->tags = new ArrayCollection();
     }
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
-    private $author;
 
+    /**
+     * Author.
+     *
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private $author;
 
 
     #[ORM\Column(type: 'text')]
     #[Assert\Type('string')]
     #[Assert\Length(min: 1000, max: 3000)]
-    private $news;
+    private ?string $news;
 
 
 
@@ -238,13 +247,6 @@ class Task
         return $this;
     }
 
-    public function setStatus(?User $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
     public function getNews(): ?string
     {
         return $this->news;
@@ -255,5 +257,16 @@ class Task
         $this->news = $news;
 
         return $this;
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(): QueryBuilder
+    {
+        return null ?? $this->createQueryBuilder('category');
     }
 }

@@ -6,7 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Tag;
-use Form\Type\TagType;
+use App\Form\Type\TagType;
 use App\Service\TagServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -34,7 +34,7 @@ class TagController extends AbstractController
     /**
      * Constructor.
      *
-     * @param TaskServiceInterface $tagService Tag service
+     * @param TagServiceInterface $tagService Tag service
      * @param TranslatorInterface  $translator Translator
      */
     public function __construct(TagServiceInterface $tagService, TranslatorInterface $translator)
@@ -107,7 +107,7 @@ class TagController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Task    $tag     Task entity
+     * @param Tag    $tag     Tag entity
      *
      * @return Response HTTP response
      */
@@ -141,7 +141,7 @@ class TagController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Task    $tag     Tag entity
+     * @param Tag    $tag     Tag entity
      *
      * @return Response HTTP response
      */

@@ -2,8 +2,13 @@
 
 namespace App\Repository;
 
+
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -74,13 +79,19 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * Delete entity.
-     *
-     * @param Category $category Category entity
+     * @param Category $category
+     * @return int
+     * @throws NoResultException
+     * @throws NonUniqueResultException
      */
-    public function delete(Category $category): void
+    public function countByCategory(Category $category): int
     {
-        $this->_em->remove($category);
-        $this->_em->flush();
+        $qb = $this->getOrCreateQueryBuilder();
+
+        return $qb->select($qb->expr()->countDistinct('task.id'))
+            ->where('task.category = :category')
+            ->setParameter(':category', $category)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }

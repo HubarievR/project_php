@@ -6,7 +6,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Tag;
 use App\Entity\Task;
+use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -44,6 +46,21 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
             $task->setCategory($category);
+
+            /** @var array<array-key, Tag> $tags */
+            $tags = $this->getRandomReferences(
+                'tags',
+                $this->faker->numberBetween(0, 5)
+            );
+            foreach ($tags as $tag) {
+                $task->addTag($tag);
+            }
+
+//            $task->setStatus(TaskStatus::from($this->faker->numberBetween(1, 2)));
+
+            /** @var User $author */
+            $author = $this->getRandomReference('users');
+            $task->setAuthor($author);
 
             $task->setNews($this->faker->text(1000));
 

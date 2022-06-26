@@ -47,6 +47,16 @@ class TaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
+            'author',
+            TextType::class,
+            options: [
+                'label' => 'label.author',
+                'required' => true,
+                'attr' => ['max_length' => 255],
+            ]
+        );
+
+        $builder->add(
             'title',
             TextType::class,
             options: [
@@ -69,6 +79,8 @@ class TaskType extends AbstractType
                 'required' => true,
             ]
         );
+
+
         $builder->add(
             'tags',
             TextType::class,

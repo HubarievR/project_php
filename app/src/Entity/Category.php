@@ -72,6 +72,16 @@ class Category
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug;
 
+    /**
+     * Getter for Id.
+     *
+     * @return int|null Id
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -82,6 +92,11 @@ class Category
         $this->title = $title;
 
         return $this;
+    }
+
+    public function getCreatedAt(): ?DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 
     public function setCreatedAt(DateTimeImmutable $createdAt): void

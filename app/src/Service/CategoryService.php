@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+
 class CategoryService implements CategoryServiceInterface
 {
     private PaginatorInterface $paginator;
@@ -46,11 +47,37 @@ class CategoryService implements CategoryServiceInterface
     public function canBeDeleted(Category $category): bool
     {
         try {
-            $result = $this->taskRepository->countByCategory($category);
+            $result = $this->categoryRepository->countByCategory($category);
 
             return !($result > 0);
         } catch (NoResultException|NonUniqueResultException) {
             return false;
         }
+    }
+
+    /**
+     * Find by title.
+     *
+     * @param string $title Category title
+     *
+     * @return Category|null Category entity
+     */
+    public function findOneByTitle(string $title): ?Category
+    {
+        return $this->categoryRepository->findOneByTitle($title);
+    }
+
+    /**
+     * Find by id.
+     *
+     * @param int $id Category id
+     *
+     * @return Category|null Category entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Category
+    {
+        return $this->categoryRepository->findOneById($id);
     }
 }

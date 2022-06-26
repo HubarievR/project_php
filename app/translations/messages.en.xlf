@@ -6,17 +6,50 @@
         <source>label.actions</source>
         <target>Actions</target>
       </trans-unit>
+      <trans-unit id="logIN_as">
+              <source>logIN_as</source>
+              <target>Log as</target>
+            </trans-unit>
+       <trans-unit id="main_page">
+                     <source>main_page</source>
+                     <target>Main page</target>
+                   </trans-unit>
+        <trans-unit id="category_page">
+            <source>category_page</source>
+            <target>Categories</target>
+        </trans-unit>
+        <trans-unit id="tag_page">
+             <source>tag_page</source>
+                 <target>Tags</target>
+         </trans-unit>
+     <trans-unit id="action_logout">
+                <source>action_logout</source>
+                  <target>Log out</target>
+     </trans-unit>
+
       <trans-unit id="action.show">
         <source>action.show</source>
         <target>Show</target>
       </trans-unit>
       <trans-unit id="title.task_list">
         <source>title.task_list</source>
-        <target>Task list</target>
+        <target>Panel admin for Web newspaper </target>
+      </trans-unit>
+      <trans-unit id="action.create_task">
+        <source>action.create_task</source>
+        <target>Create article</target>
       </trans-unit>
       <trans-unit id="label.id">
         <source>label.id</source>
         <target>Id</target>
+      </trans-unit>
+      <trans-unit id="label.tag">
+        <source>label.tag</source>
+        <target>Tag</target>
+      </trans-unit>
+      <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Author</target>
       </trans-unit>
       <trans-unit id="label.created_at">
         <source>label.created_at</source>
@@ -56,11 +89,19 @@
       </trans-unit>
       <trans-unit id="title.task_details">
         <source>title.task_details</source>
-        <target>Task details</target>
+        <target>Article details</target>
       </trans-unit>
       <trans-unit id="action.back_to_list">
         <source>action.back_to_list</source>
-       <target>Back to task list</target>
+       <target>Back to articles</target>
+       </trans-unit>
+       <trans-unit id="label_news">
+        <source>label_news</source>
+       <target>Content</target>
+       </trans-unit>
+       <trans-unit id="title.task_delete">
+        <source>title.task_delete</source>
+       <target>Deleting article</target>
        </trans-unit>
        <trans-unit id="label.category">
          <source>label.category</source>
@@ -108,11 +149,43 @@
          </trans-unit>
           <trans-unit id="action.back_to_category_list">
              <source>action.back_to_category_list</source>
-             <target>Back to category list</target>
+             <target>Go back</target>
           </trans-unit>
           <trans-unit id="action.edit">
              <source>action.edit</source>
              <target>Edit</target>
+          </trans-unit>
+          <trans-unit id="action.show_all">
+             <source>action.show_all</source>
+             <target>Show all articles</target>
+          </trans-unit>
+          <trans-unit id="title.tag_list">
+             <source>title.tag_list</source>
+             <target>Tag list</target>
+          </trans-unit>
+          <trans-unit id="action.create_tag">
+             <source>action.create_tag</source>
+             <target>Create tag</target>
+          </trans-unit>
+          <trans-unit id="title.tag_edit">
+             <source>title.tag_edit</source>
+             <target>Editing tag</target>
+          </trans-unit>
+          <trans-unit id="title.tag_delete">
+             <source>title.tag_delete</source>
+             <target>Deleting tag</target>
+          </trans-unit>
+          <trans-unit id="title.tag_create">
+             <source>title.tag_create</source>
+             <target>Creating tag</target>
+          </trans-unit>
+          <trans-unit id="action_login">
+             <source>action_login</source>
+             <target>Log in</target>
+          </trans-unit>
+          <trans-unit id="label.gazeta_name">
+             <source>label.gazeta_name</source>
+             <target>Web newspaper</target>
           </trans-unit>
     </body>
   </file>
