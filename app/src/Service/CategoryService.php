@@ -7,27 +7,40 @@ use App\Repository\CategoryRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
-
 class CategoryService implements CategoryServiceInterface
 {
     private PaginatorInterface $paginator;
 
+    /**
+     * @param Category $category
+     */
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
     }
 
+    /**
+     * @param Category $category
+     */
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
     }
 
+    /**
+     * @param CategoryRepository $categoryRepository
+     * @param PaginatorInterface $paginator
+     */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator)
     {
         $this->categoryRepository = $categoryRepository;
         $this->paginator = $paginator;
     }
 
+    /**
+     * @param int $page
+     * @return PaginationInterface
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(

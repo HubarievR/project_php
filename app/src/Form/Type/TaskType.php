@@ -80,7 +80,6 @@ class TaskType extends AbstractType
             ]
         );
 
-
         $builder->add(
             'tags',
             TextType::class,
@@ -91,11 +90,9 @@ class TaskType extends AbstractType
             ]
         );
 
-
         $builder->get('tags')->addModelTransformer(
             $this->tagsDataTransformer
         );
-
 
         $builder->add(
             'news',

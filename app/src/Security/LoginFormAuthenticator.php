@@ -46,8 +46,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     private UrlGeneratorInterface $urlGenerator;
 
+
     /**
-     * Constructor.
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
@@ -69,20 +70,10 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             && $request->isMethod('POST');
     }
 
+
     /**
-     * Create a passport for the current request.
-     *
-     * The passport contains the user, credentials and any additional information
-     * that has to be checked by the Symfony Security system. For example, a login
-     * form authenticator will probably return a passport containing the user, the
-     * presented password and the CSRF token value.
-     *
-     * You may throw any AuthenticationException in this method in case of error (e.g.
-     * a UserNotFoundException when the user cannot be found).
-     *
-     * @return Passport Passport
-     *
-     * @throws AuthenticationException
+     * @param Request $request
+     * @return Passport
      */
     public function authenticate(Request $request): Passport
     {

@@ -39,12 +39,10 @@ class TaskService implements TaskServiceInterface
 
 
     /**
-     * Constructor.
-     *
-     * @param CategoryServiceInterface $categoryService Category service
-     * @param PaginatorInterface       $paginator       Paginator
-     * @param TagServiceInterface      $tagService      Tag service
-     * @param TaskRepository           $taskRepository  Task repository
+     * @param CategoryServiceInterface $categoryService
+     * @param PaginatorInterface $paginator
+     * @param TagServiceInterface $tagService
+     * @param TaskRepository $taskRepository
      */
     public function __construct(
         CategoryServiceInterface $categoryService,
@@ -58,14 +56,11 @@ class TaskService implements TaskServiceInterface
         $this->taskRepository = $taskRepository;
     }
 
+
     /**
-     * Get paginated list.
-     *
-     * @param int                $page    Page number
-     * @param User               $author  Tasks author
-     * @param array<string, int> $filters Filters array
-     *
-     * @return PaginationInterface<SlidingPagination> Paginated list
+     * @param int $page
+     * @param array $filters
+     * @return PaginationInterface
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
@@ -77,13 +72,9 @@ class TaskService implements TaskServiceInterface
             TaskRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
-
     /**
-     * Get paginated list with ads to accept.
-     *
      * @param int $page
      * @return PaginationInterface
-     *
      */
     public function getPaginatedAcceptList(int $page): PaginationInterface
     {
@@ -140,6 +131,4 @@ class TaskService implements TaskServiceInterface
 
         return $resultFilters;
     }
-
-
 }

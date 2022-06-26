@@ -11,22 +11,36 @@ class TagService implements TagServiceInterface
 {
     private PaginatorInterface $paginator;
 
+    /**
+     * @param Tag $tag
+     */
     public function save(Tag $tag): void
     {
         $this->tagRepository->save($tag);
     }
 
+    /**
+     * @param Tag $tag
+     */
     public function delete(Tag $tag): void
     {
         $this->tagRepository->delete($tag);
     }
 
+    /**
+     * @param TagRepository $tagRepository
+     * @param PaginatorInterface $paginator
+     */
     public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator)
     {
         $this->tagRepository = $tagRepository;
         $this->paginator = $paginator;
     }
 
+    /**
+     * @param int $page
+     * @return PaginationInterface
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -79,5 +93,4 @@ class TagService implements TagServiceInterface
     {
         return $this->tagRepository->findOneById($id);
     }
-
 }

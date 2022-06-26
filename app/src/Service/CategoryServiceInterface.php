@@ -6,16 +6,20 @@ use App\Entity\Category;
 
 interface CategoryServiceInterface
 {
+    /**
+     * @param Category $category
+     */
     public function save(Category $category): void;
 
+    /**
+     * @param Category $category
+     */
     public function delete(Category $category): void;
 
+
     /**
-     * Can Category be deleted?
-     *
-     * @param Category $category Category entity
-     *
-     * @return bool Result
+     * @param Category $category
+     * @return bool
      */
     public function canBeDeleted(Category $category): bool;
 
@@ -28,4 +32,3 @@ interface CategoryServiceInterface
      */
     public function findOneByTitle(string $title): ?Category;
 }
-

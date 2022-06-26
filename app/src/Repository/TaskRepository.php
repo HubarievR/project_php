@@ -6,8 +6,8 @@
 namespace App\Repository;
 
 use App\Entity\Category;
-use App\Entity\Task;
 use App\Entity\Tag;
+use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -70,7 +70,6 @@ class TaskRepository extends ServiceEntityRepository
         return $this->applyFiltersToList($queryBuilder, $filters);
     }
 
-
     /**
      * Query tasks by author.
      *
@@ -99,7 +98,6 @@ class TaskRepository extends ServiceEntityRepository
      * @throws NoResultException
      * @throws NonUniqueResultException
      */
-
 
     /**
      * Save entity.

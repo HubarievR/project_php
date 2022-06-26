@@ -1,14 +1,19 @@
 <?php
 
-namespace App\Controller; // App zamiast src, zamieniliśmy to w composer.json
+namespace App\Controller;
 
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
 
+
     #[Route('/hello')]
     class HelloController extends AbstractController
     {
+        /**
+         * @param string $name
+         * @return Response
+         */
         #[Route(
             '/{name}',
             name: 'hello_index',
@@ -18,6 +23,7 @@ namespace App\Controller; // App zamiast src, zamieniliśmy to w composer.json
         )]
         public function index(string $name): Response
         {
+            /** @var TYPE_NAME $this */
             return $this->render(
                 'hello/index.html.twig',
                 ['name' => $name]

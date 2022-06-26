@@ -21,14 +21,18 @@ class TagRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tag::class);
     }
 
+
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param Tag $entity
+     * @param bool $flush
      */
     public function add(Tag $entity, bool $flush = true): void
     {
@@ -38,9 +42,10 @@ class TagRepository extends ServiceEntityRepository
         }
     }
 
+
     /**
-     * @throws ORMException
-     * @throws OptimisticLockException
+     * @param Tag $entity
+     * @param bool $flush
      */
     public function remove(Tag $entity, bool $flush = true): void
     {

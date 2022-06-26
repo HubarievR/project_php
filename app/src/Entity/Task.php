@@ -17,6 +17,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Task.
+ *
  * @method createQueryBuilder(string $string)
  */
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
@@ -25,7 +26,8 @@ class Task
 {
     /**
      * Primary key.
-     *symfony
+     *symfony.
+     *
      * @var int|null
      */
     #[ORM\Id]
@@ -88,12 +90,11 @@ class Task
     /**
      * Constructor.
      */
-    #[Pure] public function __construct()
-    {
-        $this->tags = new ArrayCollection();
-    }
-
-
+    #[Pure]
+ public function __construct()
+ {
+     $this->tags = new ArrayCollection();
+ }
     /**
      * Author.
      *
@@ -105,13 +106,10 @@ class Task
     #[Assert\Type(User::class)]
     private $author;
 
-
     #[ORM\Column(type: 'text')]
     #[Assert\Type('string')]
     #[Assert\Length(min: 1000, max: 3000)]
     private ?string $news;
-
-
 
     /**
      * Getter for Id.
@@ -235,11 +233,18 @@ class Task
         $this->tags->removeElement($tag);
     }
 
+    /**
+     * @return User|null
+     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }
 
+    /**
+     * @param User|null $author
+     * @return $this
+     */
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
@@ -247,11 +252,18 @@ class Task
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNews(): ?string
     {
         return $this->news;
     }
 
+    /**
+     * @param string $news
+     * @return $this
+     */
     public function setNews(string $news): self
     {
         $this->news = $news;
@@ -261,7 +273,6 @@ class Task
 
     /**
      * Get or create new query builder.
-     *
      *
      * @return QueryBuilder Query builder
      */

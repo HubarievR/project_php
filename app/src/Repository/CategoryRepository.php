@@ -2,13 +2,10 @@
 
 namespace App\Repository;
 
-
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
-use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -55,28 +52,25 @@ class CategoryRepository extends ServiceEntityRepository
             ->orderBy('category.updatedAt', 'DESC');
     }
 
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
-    }
 
     /**
-     * Save entity.
-     *
-     * @param Category $category Category entity
+     * @return QueryBuilder
+     */
+    private function getOrCreateQueryBuilder(): QueryBuilder
+    {
+        return null ?? $this->createQueryBuilder('category');
+    }
+
+
+    /**
+     * @param Category $category
      */
     public function save(Category $category): void
     {
         $this->_em->persist($category);
         $this->_em->flush();
     }
+
 
     /**
      * @param Category $category

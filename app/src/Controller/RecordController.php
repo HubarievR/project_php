@@ -10,6 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/record')]
 class RecordController extends AbstractController
 {
+    /**
+     * @param RecordRepository $repository
+     * @return Response
+     */
     #[Route(
         name: 'record_index',
         methods: 'GET'
@@ -24,6 +28,11 @@ class RecordController extends AbstractController
         );
     }
 
+    /**
+     * @param RecordRepository $repository
+     * @param int $id
+     * @return Response
+     */
     #[Route(
         '/{id}',
         name: 'record_show',

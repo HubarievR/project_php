@@ -43,15 +43,13 @@ class TaskController extends AbstractController
         $this->translator = $translator;
     }
 
+
     /**
-     * Index action.
-     *
-     * @param Request $request HTTP Request
-     * @param $author
-     * @return Response HTTP response
+     * @param Request $request
+     * @return Response
      */
     #[Route(name: 'task_index', methods: 'GET')]
-    public function index(Request $request,): Response
+    public function index(Request $request): Response
     {
         $filters = $this->getFilters($request);
         /** @var User $user */
@@ -86,12 +84,10 @@ class TaskController extends AbstractController
         return $this->render('task/show2.html.twig', ['task' => $task]);
     }
 
+
     /**
-     * Create action.
-     *
-     * @param Request $request HTTP request
-     *
-     * @return Response HTTP response
+     * @param Request $request
+     * @return Response
      */
     #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
     public function create(Request $request): Response
@@ -185,7 +181,6 @@ class TaskController extends AbstractController
             'task' => $task,
         ]);
     }
-
 
     /**
      * Get filters from request.
