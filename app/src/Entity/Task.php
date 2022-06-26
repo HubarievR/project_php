@@ -87,6 +87,13 @@ class Task
     #[ORM\JoinTable(name: 'tasks_tags')]
     private $tags;
 
+
+    /**
+     * Comment.
+     */
+    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
+    private $comment;
+
     /**
      * Constructor.
      */
@@ -95,16 +102,16 @@ class Task
  {
      $this->tags = new ArrayCollection();
  }
-    /**
-     * Author.
-     *
-     * @var User|null
-     */
-    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank]
-    #[Assert\Type(User::class)]
-    private $author;
+//    /**
+//     * Author.
+//     *
+//     * @var User|null
+//     */
+//    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+//    #[ORM\JoinColumn(nullable: false)]
+//    #[Assert\NotBlank]
+//    #[Assert\Type(User::class)]
+//    private $author;
 
     #[ORM\Column(type: 'text')]
     #[Assert\Type('string')]
@@ -234,23 +241,66 @@ class Task
     }
 
     /**
-     * @return User|null
+     * Getter for comment.
+     *
+     * @return Collection<int, Comment>
      */
-    public function getAuthor(): ?User
+    public function getComment(): Collection
     {
-        return $this->author;
+        return $this->comment;
     }
 
     /**
-     * @param User|null $author
+     * Add comment.
+     *
      * @return $this
      */
-    public function setAuthor(?User $author): self
+    public function addComment(Comment $comment): self
     {
-        $this->author = $author;
+        if (!$this->comment->contains($comment)) {
+            $this->comment[] = $comment;
+            $comment->setTask($this);
+        }
 
         return $this;
     }
+
+    /**
+     * Remove comment.
+     *
+     * @return $this
+     */
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comment->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getTask() === $this) {
+                $comment->setTask(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+//    /**
+//     * @return User|null
+//     */
+//    public function getAuthor(): ?User
+//    {
+//        return $this->author;
+//    }
+//
+//    /**
+//     * @param User|null $author
+//     * @return $this
+//     */
+//    public function setAuthor(?User $author): self
+//    {
+//        $this->author = $author;
+//
+//        return $this;
+//    }
 
     /**
      * @return string|null

@@ -6,7 +6,6 @@
 namespace App\Service;
 
 use App\Entity\Task;
-use App\Entity\User;
 use App\Repository\TaskRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\Pagination\SlidingPagination;
@@ -69,7 +68,7 @@ class TaskService implements TaskServiceInterface
         return $this->paginator->paginate(
             $this->taskRepository->queryAll($filters),
             $page,
-            TaskRepository::PAGINATOR_ITEMS_PER_PAGE
+           // TaskRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
     /**

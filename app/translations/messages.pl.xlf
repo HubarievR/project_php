@@ -1,119 +1,288 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="file.ext">
-    <body>
+<file source-language="en" datatype="plaintext" original="file.ext">
+<body>
+
     <trans-unit id="label.actions">
         <source>label.actions</source>
-        <target>Actions</target>
-      </trans-unit>
-      <trans-unit id="action.show">
+        <target>Operacje</target>
+    </trans-unit>
+
+    <trans-unit id="logIN_as">
+        <source>logIN_as</source>
+        <target>Zalogowany(a) jako</target>
+    </trans-unit>
+
+    <trans-unit id="main_page">
+        <source>main_page</source>
+        <target>Strona główna</target>
+    </trans-unit>
+
+    <trans-unit id="category_page">
+        <source>category_page</source>
+        <target>Kategorie</target>
+    </trans-unit>
+
+    <trans-unit id="tag_page">
+        <source>tag_page</source>
+        <target>Tagi</target>
+    </trans-unit>
+
+    <trans-unit id="action_logout">
+        <source>action_logout</source>
+        <target>Wyloguj</target>
+    </trans-unit>
+
+    <trans-unit id="action.show">
         <source>action.show</source>
-        <target>Show</target>
-      </trans-unit>
-      <trans-unit id="title.task_list">
+        <target>Pokaż</target>
+    </trans-unit>
+
+    <trans-unit id="title.task_list">
         <source>title.task_list</source>
-        <target>Task list</target>
-      </trans-unit>
-      <trans-unit id="label.id">
+        <target>Panel administratora dla Gazety internetowej</target>
+    </trans-unit>
+
+    <trans-unit id="action.create_task">
+        <source>action.create_task</source>
+        <target>Stwórz artykuł</target>
+    </trans-unit>
+
+    <trans-unit id="label.id">
         <source>label.id</source>
         <target>Id</target>
-      </trans-unit>
-      <trans-unit id="label.created_at">
+    </trans-unit>
+
+    <trans-unit id="label.tag">
+        <source>label.tag</source>
+        <target>Tag</target>
+    </trans-unit>
+
+    <trans-unit id="label.author">
+        <source>label.author</source>
+        <target>Autor</target>
+    </trans-unit>
+
+    <trans-unit id="label.created_at">
         <source>label.created_at</source>
-         <target>Created date</target>
-      </trans-unit>
-      <trans-unit id="label.updated_at">
-      <source>label.updated_at</source>
-       <target>Updated date</target>
-      </trans-unit>
-      <trans-unit id="label.title">
+        <target>Data stworzenia</target>
+    </trans-unit>
+
+    <trans-unit id="label.updated_at">
+        <source>label.updated_at</source>
+        <target>Data aktualizacji</target>
+    </trans-unit>
+
+    <trans-unit id="label.title">
         <source>label.title</source>
-        <target>Title</target>
-      </trans-unit>
-      <trans-unit id="label.content">
+        <target>Tytuł</target>
+    </trans-unit>
+
+    <trans-unit id="label.content">
         <source>label.content</source>
-        <target>Content</target>
-      </trans-unit>
-      <trans-unit id="label.tags">
+        <target>Treść</target>
+    </trans-unit>
+
+    <trans-unit id="label.tags">
         <source>label.tags</source>
-        <target>Tags</target>
-      </trans-unit>
-      <trans-unit id="message.empty_list">
+        <target>Tagi</target>
+    </trans-unit>
+
+    <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
-        <target>List is empty.</target>
-      </trans-unit>
-      <trans-unit id="message.record_not_found">
+        <target>Lista jest pusta.</target>
+    </trans-unit>
+
+    <trans-unit id="message.record_not_found">
         <source>message.record_not_found</source>
-        <target>Record not found.</target>
-      </trans-unit>
-      <trans-unit id="title.record_list">
+        <target>Wpis nie znaleziono.</target>
+    </trans-unit>
+
+    <trans-unit id="title.record_list">
         <source>title.record_list</source>
-        <target>Records list</target>
-      </trans-unit>
-      <trans-unit id="title.record_view">
+        <target>Lista wpisów</target>
+    </trans-unit>
+
+    <trans-unit id="title.record_view">
         <source>title.record_view</source>
-        <target>Record view #%id%</target>
-      </trans-unit>
-      <trans-unit id="title.task_details">
+        <target>Podgłąd wpisu #%id%</target>
+    </trans-unit>
+
+    <trans-unit id="title.task_details">
         <source>title.task_details</source>
-        <target>Task details</target>
-      </trans-unit>
-      <trans-unit id="action.back_to_list">
+        <target>Detele artykułu</target>
+    </trans-unit>
+
+    <trans-unit id="action.back_to_list">
         <source>action.back_to_list</source>
-       <target>Back to task list</target>
-       </trans-unit>
-       <trans-unit id="label.category">
-         <source>label.category</source>
-         <target>Category</target>
-       </trans-unit>
-        <trans-unit id="title.category_list">
-           <source>title.category_list</source>
-           <target>Category list</target>
-       </trans-unit>
-       <trans-unit id="title.category_details">
-          <source>title.category_details</source>
-          <target>Category details</target>
-        </trans-unit>
-        <trans-unit id="title.category_create">
-          <source>title.category_create</source>
-           <target>Creating category</target>
-        </trans-unit>
-        <trans-unit id="action.save">
-           <source>action.save</source>
-           <target>Save</target>
-        </trans-unit>
-        <trans-unit id="message.created_successfully">
-          <source>message.created_successfully</source>
-          <target>Created succesfully</target>
-        </trans-unit>
-        <trans-unit id="title.category_edit">
-          <source>title.category_edit</source>
-          <target>Editing category</target>
-        </trans-unit>
-        <trans-unit id="title.category_delete">
-          <source>title.category_delete</source>
-          <target>Deleting category</target>
-        </trans-unit>
-        <trans-unit id="action.delete">
-          <source>action.delete</source>
-          <target>Delete</target>
-        </trans-unit>
-         <trans-unit id="message.deleted_successfully">
-           <source>message.deleted_successfully</source>
-           <target>Deleted succesfully</target>
-         </trans-unit>
-         <trans-unit id="action.create_category">
-           <source>action.create_category</source>
-           <target>Create category</target>
-         </trans-unit>
-          <trans-unit id="action.back_to_category_list">
-             <source>action.back_to_category_list</source>
-             <target>Back to category list</target>
-          </trans-unit>
-          <trans-unit id="action.edit">
-             <source>action.edit</source>
-             <target>Edit</target>
-          </trans-unit>
-    </body>
-  </file>
+        <target>Powrót do artykułów</target>
+    </trans-unit>
+
+    <trans-unit id="label_news">
+        <source>label_news</source>
+        <target>Treść</target>
+    </trans-unit>
+
+    <trans-unit id="title.task_delete">
+        <source>title.task_delete</source>
+        <target>Usuwanie artykułów</target>
+    </trans-unit>
+
+    <trans-unit id="label.category">
+        <source>label.category</source>
+        <target>Kategoria</target>
+    </trans-unit>
+
+    <trans-unit id="title.category_list">
+        <source>title.category_list</source>
+        <target>Lista kategorii</target>
+    </trans-unit>
+
+    <trans-unit id="title.category_details">
+        <source>title.category_details</source>
+        <target>Detale kategorii</target>
+    </trans-unit>
+
+    <trans-unit id="title.category_create">
+        <source>title.category_create</source>
+        <target>Tworzenie kategorii</target>
+    </trans-unit>
+
+    <trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Zapisz</target>
+    </trans-unit>
+
+    <trans-unit id="message.created_successfully">
+        <source>message.created_successfully</source>
+        <target>Zapisano pomyślnie</target>
+    </trans-unit>
+
+    <trans-unit id="title.category_edit">
+        <source>title.category_edit</source>
+        <target>Edycja kategorii</target>
+    </trans-unit>
+
+    <trans-unit id="title.category_delete">
+        <source>title.category_delete</source>
+        <target>Usuwanie kategorii  </target>
+    </trans-unit>
+
+    <trans-unit id="action.delete">
+        <source>action.delete</source>
+        <target>Usuń</target>
+    </trans-unit>
+
+        <trans-unit id="message.deleted_successfully">
+        <source>message.deleted_successfully</source>
+    <target>Usunięto pomyślnie</target>
+    </trans-unit>
+
+    <trans-unit id="action.create_category">
+        <source>action.create_category</source>
+        <target>Tworzenie kategorii</target>
+    </trans-unit>
+
+    <trans-unit id="action.back_to_category_list">
+        <source>action.back_to_category_list</source>
+        <target>Powrót</target>
+    </trans-unit>
+
+    <trans-unit id="action.edit">
+        <source>action.edit</source>
+        <target>Edycja</target>
+    </trans-unit>
+
+    <trans-unit id="action.show_all">
+        <source>action.show_all</source>
+        <target>Pokaż wszystkie artykuły</target>
+    </trans-unit>
+
+    <trans-unit id="title.tag_list">
+        <source>title.tag_list</source>
+        <target>Lista tagów</target>
+    </trans-unit>
+
+    <trans-unit id="action.create_tag">
+        <source>action.create_tag</source>
+        <target>Stwórz tag</target>
+    </trans-unit>
+
+    <trans-unit id="title.tag_edit">
+        <source>title.tag_edit</source>
+        <target>Edycja tagu</target>
+    </trans-unit>
+
+    <trans-unit id="title.tag_delete">
+        <source>title.tag_delete</source>
+        <target>Usuwanie tagu</target>
+    </trans-unit>
+
+    <trans-unit id="title.tag_create">
+        <source>title.tag_create</source>
+        <target>Tworzenie tagu</target>
+    </trans-unit>
+
+    <trans-unit id="action_login">
+        <source>action_login</source>
+        <target>Zaloguj</target>
+    </trans-unit>
+
+    <trans-unit id="label.gazeta_name">
+        <source>label.gazeta_name</source>
+        <target>Gazeta internetowa</target>
+    </trans-unit>
+
+    <trans-unit id="title.task_create">
+        <source>title.task_create</source>
+        <target>Tworzenie artykułu</target>
+    </trans-unit>
+
+    <trans-unit id="label.news">
+        <source>label.news</source>
+        <target>Treść</target>
+    </trans-unit>
+
+    <trans-unit id="label.none">
+        <source>label.none</source>
+        <target>Wybierz</target>
+    </trans-unit>
+
+    <trans-unit id="message.form_error">
+        <source>message.form_error</source>
+        <target>Błąd wypełniania formularza</target>
+    </trans-unit>
+
+    <trans-unit id="title.comment_list">
+        <source>title.comment_list</source>
+        <target>Komentarze</target>
+    </trans-unit>
+
+    <trans-unit id="action.comment_create">
+        <source>action.comment_create</source>
+        <target>Dodaj komentarz</target>
+    </trans-unit>
+
+    <trans-unit id="label.nick">
+        <source>label.nick</source>
+        <target>Imie</target>
+    </trans-unit>
+
+    <trans-unit id="title.comment_delete">
+        <source>title.comment_delete</source>
+        <target>Usuwanie komentarza</target>
+    </trans-unit>
+
+    <trans-unit id="title.comment_create">
+        <source>title.comment_create</source>
+        <target>Skomentuj to!</target>
+    </trans-unit>
+
+    <trans-unit id="label.email">
+        <source>label.email</source>
+        <target>Poczta</target>
+    </trans-unit>
+
+</body>
+</file>
 </xliff>

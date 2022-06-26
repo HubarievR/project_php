@@ -7,6 +7,7 @@ namespace App\Controller;
 
 use App\Entity\Task;
 use App\Form\Type\TaskType;
+use App\Service\CommentServiceInterface;
 use App\Service\TaskServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -27,6 +28,12 @@ class TaskController extends AbstractController
     private TaskServiceInterface $taskService;
 
     /**
+     * Comment service.
+     */
+    private CommentServiceInterface $commentService;
+
+
+    /**
      * Translator.
      */
     private TranslatorInterface $translator;
@@ -37,10 +44,11 @@ class TaskController extends AbstractController
      * @param TaskServiceInterface $taskService Task service
      * @param TranslatorInterface  $translator  Translator
      */
-    public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator)
+    public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {
         $this->taskService = $taskService;
         $this->translator = $translator;
+        $this->commentService = $commentService;
     }
 
 
@@ -53,7 +61,7 @@ class TaskController extends AbstractController
     {
         $filters = $this->getFilters($request);
         /** @var User $user */
-        $user = $this->getUser();
+      //  $user = $this->getUser();
 
         $pagination = $this->taskService->getPaginatedList(
             $request->query->getInt('page', 1),
@@ -67,21 +75,29 @@ class TaskController extends AbstractController
         return $this->render('task/index2.html.twig', ['pagination' => $pagination]);
     }
 
+
     /**
      * Show action.
      *
      * @param Task $task Task entity
+     * @param Request $request HTTP request
      *
      * @return Response HTTP response
      */
     #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function show(Task $task): Response
+    public function show(Task $task, Request $request): Response
     {
+        $commentPagination = $this->commentService->getPaginatedList(
+            $request->query->getInt('page', 1),
+            $task
+        );
+
+
         if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('task/show.html.twig', ['task' => $task]);
+            return $this->render('task/show.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
         }
 
-        return $this->render('task/show2.html.twig', ['task' => $task]);
+        return $this->render('task/show2.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
     }
 
 
@@ -92,9 +108,7 @@ class TaskController extends AbstractController
     #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
     public function create(Request $request): Response
     {
-        $user = $this->getUser();
         $task = new Task();
-        $task->setAuthor($user);
         $form = $this->createForm(TaskType::class, $task, ['action' => $this->generateUrl('task_create')]);
         $form->handleRequest($request);
 

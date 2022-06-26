@@ -55,9 +55,9 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             foreach ($tags as $tag) {
                 $task->addTag($tag);
             }
-            /** @var User $author */
-            $author = $this->getRandomReference('users');
-            $task->setAuthor($author);
+//            /** @var User $author */
+//            $author = $this->getRandomReference('users');
+//            $task->setAuthor($author);
 
             $task->setNews($this->faker->text(1000));
 

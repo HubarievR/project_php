@@ -37,7 +37,7 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry,Category::class);
     }
 
     /**
@@ -54,11 +54,12 @@ class CategoryRepository extends ServiceEntityRepository
 
 
     /**
+     * @param QueryBuilder|null $queryBuilder
      * @return QueryBuilder
      */
-    private function getOrCreateQueryBuilder(): QueryBuilder
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return null ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('category');
     }
 
 
@@ -68,6 +69,16 @@ class CategoryRepository extends ServiceEntityRepository
     public function save(Category $category): void
     {
         $this->_em->persist($category);
+        $this->_em->flush();
+    }
+
+
+    /**
+     * @param Category $category
+     */
+    public function delete(Category $category): void
+    {
+        $this->_em->remove($category);
         $this->_em->flush();
     }
 

@@ -16,15 +16,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TagType extends AbstractType
 {
+
     /**
-     * Builds the form.
-     *
-     * This method is called for each type in the hierarchy starting from the
-     * top most type. Type extensions can further modify the form.
-     *
-     * @param array<string, mixed> $options
-     *
-     * @see FormTypeExtensionInterface::buildForm()
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -39,8 +34,9 @@ class TagType extends AbstractType
         );
     }
 
+
     /**
-     * Configures the options for this type.
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

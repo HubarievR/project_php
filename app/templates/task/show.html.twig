@@ -20,13 +20,65 @@
             <dt>{{ 'label.category'|trans }}</dt>
             <dd>{{  task.category.title }}</dd>
             <dt>{{ 'label.tag'|trans}}</dt>
-            <dd>  {% for tag in task.tags %}
-                         {{tag.title}}
-                     {% endfor %}
+            <dd>{% for tag in task.tags %}
+                    {{tag.title}}
+                {% endfor %}
             </dd>
             <dt>{{ 'label_news'|trans }}</dt>
             <dd>{{ task.news|markdown_to_html }}</dd>
         </dl>
+        <h3>{{ 'title.comment_list'|trans }}</h3>
+        {% if commentPagination is defined and commentPagination.items|length %}
+
+            <div class="navigation text-center">
+                {{ knp_pagination_render(commentPagination) }}
+            </div>
+
+            <table class="table table-striped">
+            <thead>
+             <tr>
+                 <th>{{ knp_pagination_sortable(commentPagination, 'label.id'|trans, 'comment.id') }}</th>
+                 <th>{{ knp_pagination_sortable(commentPagination, 'label.nick'|trans, 'comment.nick') }}</th>
+                 <th>{{ knp_pagination_sortable(commentPagination, 'label.created_at'|trans, 'comment.createdAt') }}</th>
+                 <th>{{ knp_pagination_sortable(commentPagination, 'label.content'|trans, 'comment.content') }}</th>
+                 <th>{{ 'label.actions'|trans }}</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for comment in commentPagination.items %}
+            <tr>
+            <td>{{ comment.id }}</td>
+            <td>{{ comment.nick }}</td>
+            <td>{{ comment.createdAt|format_date('long') }}</td>
+            <td>{{ comment.content }}</td>
+            <td><a class="btn btn-outline-danger" href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'action.delete'|trans }}">
+                                    {{ 'action.delete'|trans }}
+                </a>
+            </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+
+            <div class="navigation text-center">
+                {{ knp_pagination_render(commentPagination) }}
+            </div>
+
+        {% else %}
+            <p>
+                {{ 'message.record_not_found'|trans }}
+            </p>
+
+
+        {% endif %}
+
+        <p>
+            <a class="btn btn-outline-primary coment-btn" href="{{ url('comment_create', {id: task.id}) }}" title="{{ 'action.comment_create'|trans }}">
+                {{ 'action.comment_create'|trans }}
+            </a>
+        </p>
+
         <p>
             <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
@@ -34,9 +86,8 @@
         </p>
     {% else %}
         <p>
-            {{ 'message.record_not_found'|trans }}
+            {{ 'message.task_not_found'|trans }}
         </p>
-        </div>
-
     {% endif %}
+    </div>
 {% endblock %}

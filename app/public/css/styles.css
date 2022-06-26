@@ -148,5 +148,15 @@ a{
 
 a:hover{
     color: orange;
+}
 
+.coment-btn{
+    border: 1px solid black;
+    color: black;
+}
+
+.coment-btn:hover{
+    border: 1px solid orange;
+    color: orange;
+    background-color: transparent;
 }

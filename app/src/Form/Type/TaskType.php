@@ -34,27 +34,22 @@ class TaskType extends AbstractType
         $this->tagsDataTransformer = $tagsDataTransformer;
     }
 
+
     /**
-     * Builds the form.
-     *
-     * This method is called for each type in the hierarchy starting from the
-     * top most type. Type extensions can further modify the form.
-     *
-     * @param array<string, mixed> $options
-     *
-     * @see FormTypeExtensionInterface::buildForm()
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add(
-            'author',
-            TextType::class,
-            options: [
-                'label' => 'label.author',
-                'required' => true,
-                'attr' => ['max_length' => 255],
-            ]
-        );
+//        $builder->add(
+//            'author',
+//            TextType::class,
+//            options: [
+//                'label' => 'label.author',
+//                'required' => true,
+//                'attr' => ['max_length' => 255],
+//            ]
+//        );
 
         $builder->add(
             'title',
