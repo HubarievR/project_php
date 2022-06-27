@@ -1,4 +1,7 @@
 <?php
+/**
+ * Category Service.
+ */
 
 namespace App\Service;
 
@@ -8,35 +11,25 @@ use App\Repository\TaskRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class CategoryService.
+ */
 class CategoryService implements CategoryServiceInterface
 {
     private PaginatorInterface $paginator;
 
-    /**
-     * @param Category $category
-     */
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
     }
 
-    /**
-     * Task repository.
-     */
     private TaskRepository $taskRepository;
 
-    /**
-     * @param Category $category
-     */
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
     }
 
-    /**
-     * @param CategoryRepository $categoryRepository
-     * @param PaginatorInterface $paginator
-     */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, TaskRepository $taskRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -44,10 +37,6 @@ class CategoryService implements CategoryServiceInterface
         $this->taskRepository = $taskRepository;
     }
 
-    /**
-     * @param int $page
-     * @return PaginationInterface
-     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -74,7 +63,6 @@ class CategoryService implements CategoryServiceInterface
             return false;
         }
     }
-
 
     /**
      * Find by title.

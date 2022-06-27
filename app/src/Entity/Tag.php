@@ -1,4 +1,7 @@
 <?php
+/**
+ * Entity Tag.
+ */
 
 namespace App\Entity;
 
@@ -8,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Tag.
+ */
 #[ORM\Entity(repositoryClass: TagRepository::class)]
 class Tag
 {
@@ -39,16 +45,13 @@ class Tag
     #[ORM\Column(type: 'string', length: 64)]
     private $title;
 
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * Getter for created time.
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -56,7 +59,6 @@ class Tag
     }
 
     /**
-     * @param DateTimeImmutable $createdAt
      * @return $this
      */
     public function setCreatedAt(DateTimeImmutable $createdAt): self
@@ -67,7 +69,7 @@ class Tag
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * Getter for updated time.
      */
     public function getUpdatedAt(): ?DateTimeImmutable
     {
@@ -75,7 +77,6 @@ class Tag
     }
 
     /**
-     * @param DateTimeImmutable $updatedAt
      * @return $this
      */
     public function setUpdatedAt(DateTimeImmutable $updatedAt): self
@@ -86,7 +87,7 @@ class Tag
     }
 
     /**
-     * @return string|null
+     * Getter for title.
      */
     public function getTitle(): ?string
     {
@@ -94,7 +95,6 @@ class Tag
     }
 
     /**
-     * @param string $title
      * @return $this
      */
     public function setTitle(string $title): self

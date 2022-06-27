@@ -1,4 +1,7 @@
 <?php
+/**
+ *Record Controller.
+ */
 
 namespace App\Controller;
 
@@ -7,11 +10,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class RecordController.
+ */
 #[Route('/record')]
 class RecordController extends AbstractController
 {
     /**
      * @param RecordRepository $repository
+     *
      * @return Response
      */
     #[Route(
@@ -22,15 +29,15 @@ class RecordController extends AbstractController
     {
         $records = $repository->findAll();
 
-        return $this->render(
-            'record/index.html.twig',
-            ['records' => $records]
-        );
+        return $this->render('record/index.html.twig', ['records' => $records]);
     }
 
     /**
+     * Show action.
+     *
      * @param RecordRepository $repository
-     * @param int $id
+     * @param int              $id
+     *
      * @return Response
      */
     #[Route(

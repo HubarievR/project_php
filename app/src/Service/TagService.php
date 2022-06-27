@@ -1,4 +1,7 @@
 <?php
+/**
+ * Tag service.
+ */
 
 namespace App\Service;
 
@@ -10,36 +13,28 @@ use Doctrine\ORM\NoResultException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
+/**
+ * Class TagService.
+ */
 class TagService implements TagServiceInterface
 {
     private PaginatorInterface $paginator;
 
-    /**
-     * @param Tag $tag
-     */
     public function save(Tag $tag): void
     {
         $this->tagRepository->save($tag);
     }
 
-    /**
-     * @param Tag $tag
-     */
     public function delete(Tag $tag): void
     {
         $this->tagRepository->delete($tag);
     }
 
-    /**
-     * @param TagRepository $tagRepository
-     * @param PaginatorInterface $paginator
-     */
-    public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator,TaskRepository $taskRepository)
+    public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator, TaskRepository $taskRepository)
     {
         $this->tagRepository = $tagRepository;
         $this->paginator = $paginator;
         $this->taskRepository = $taskRepository;
-
     }
 
     /**
@@ -47,10 +42,6 @@ class TagService implements TagServiceInterface
      */
     private TaskRepository $taskRepository;
 
-    /**
-     * @param int $page
-     * @return PaginationInterface
-     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -77,7 +68,6 @@ class TagService implements TagServiceInterface
             return false;
         }
     }
-
 
     /**
      * Find by title.

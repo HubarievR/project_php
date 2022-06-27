@@ -1,11 +1,12 @@
 <?php
+/**
+ * Tag Repository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -21,19 +22,11 @@ class TagRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-    /**
-     * @param ManagerRegistry $registry
-     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tag::class);
     }
 
-
-    /**
-     * @param Tag $entity
-     * @param bool $flush
-     */
     public function add(Tag $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
@@ -42,11 +35,6 @@ class TagRepository extends ServiceEntityRepository
         }
     }
 
-
-    /**
-     * @param Tag $entity
-     * @param bool $flush
-     */
     public function remove(Tag $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);

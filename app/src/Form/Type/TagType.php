@@ -16,11 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class TagType extends AbstractType
 {
-
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
@@ -34,21 +29,11 @@ class TagType extends AbstractType
         );
     }
 
-
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => Tag::class]);
     }
 
-    /**
-     * Returns the prefix of the template block name for this type.
-     *
-     * The block prefix defaults to the underscored short class name with
-     * the "Type" suffix removed (e.g. "UserProfileType" => "user_profile").
-     */
     public function getBlockPrefix(): string
     {
         return 'category';

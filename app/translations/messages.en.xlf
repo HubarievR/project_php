@@ -348,6 +348,26 @@
         <target>Article was not found.</target>
     </trans-unit>
 
+    <trans-unit id="label.sigin">
+        <source>label.sigin</source>
+        <target>Please sign in</target>
+    </trans-unit>
+
+    <trans-unit id="label.passwd">
+        <source>label.passwd</source>
+        <target>Password</target>
+    </trans-unit>
+
+    <trans-unit id="action.signin">
+        <source>action.signin</source>
+        <target>Sign in</target>
+    </trans-unit>
+
+    <trans-unit id="title.login">
+        <source>title.login</source>
+        <target>Log in</target>
+    </trans-unit>
+
 </body>
 </file>
 </xliff>

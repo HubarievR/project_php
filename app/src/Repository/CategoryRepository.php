@@ -1,11 +1,12 @@
 <?php
+/**
+ * Category Repository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -30,14 +31,9 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-    /**
-     * Constructor.
-     *
-     * @param ManagerRegistry $registry Manager registry
-     */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry,Category::class);
+        parent::__construct($registry, Category::class);
     }
 
     /**
@@ -52,19 +48,14 @@ class CategoryRepository extends ServiceEntityRepository
             ->orderBy('category.updatedAt', 'DESC');
     }
 
-
-    /**
-     * @param QueryBuilder|null $queryBuilder
-     * @return QueryBuilder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    public function delete(Category $category): void
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        $this->_em->remove($category);
+        $this->_em->flush();
     }
 
-
     /**
-     * @param Category $category
+     * Save entity.
      */
     public function save(Category $category): void
     {
@@ -72,31 +63,8 @@ class CategoryRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
-
-    /**
-     * @param Category $category
-     */
-    public function delete(Category $category): void
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        $this->_em->remove($category);
-        $this->_em->flush();
+        return $queryBuilder ?? $this->createQueryBuilder('category');
     }
-
-
-//    /**
-//     * @param Category $category
-//     * @return int
-//     * @throws NoResultException
-//     * @throws NonUniqueResultException
-//     */
-//    public function countByCategory(Category $category): int
-//    {
-//        $qb = $this->getOrCreateQueryBuilder();
-//
-//        return $qb->select($qb->expr()->countDistinct('task.id'))
-//            ->where('task.category = :category')
-//            ->setParameter(':category', $category)
-//            ->getQuery()
-//            ->getSingleScalarResult();
-//    }
 }

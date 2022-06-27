@@ -32,17 +32,13 @@ class TaskController extends AbstractController
      */
     private CommentServiceInterface $commentService;
 
-
     /**
      * Translator.
      */
     private TranslatorInterface $translator;
 
     /**
-     * Constructor.
-     *
-     * @param TaskServiceInterface $taskService Task service
-     * @param TranslatorInterface  $translator  Translator
+     * Construct action.
      */
     public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {
@@ -51,9 +47,11 @@ class TaskController extends AbstractController
         $this->commentService = $commentService;
     }
 
-
     /**
+     * Index action.
+     *
      * @param Request $request
+     *
      * @return Response
      */
     #[Route(name: 'task_index', methods: 'GET')]
@@ -61,8 +59,7 @@ class TaskController extends AbstractController
     {
         $filters = $this->getFilters($request);
         /** @var User $user */
-      //  $user = $this->getUser();
-
+        //  $user = $this->getUser();
         $pagination = $this->taskService->getPaginatedList(
             $request->query->getInt('page', 1),
             $filters
@@ -75,11 +72,10 @@ class TaskController extends AbstractController
         return $this->render('task/index2.html.twig', ['pagination' => $pagination]);
     }
 
-
     /**
      * Show action.
      *
-     * @param Task $task Task entity
+     * @param Task    $task    Task entity
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
@@ -92,7 +88,6 @@ class TaskController extends AbstractController
             $task
         );
 
-
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->render('task/show.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
         }
@@ -100,13 +95,14 @@ class TaskController extends AbstractController
         return $this->render('task/show2.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
     }
 
-
     /**
      * Create action.
+     *
      * @param Request $request
+     *
      * @return Response
      */
-    #[Route('/create', name: 'task_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'task_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         $task = new Task();

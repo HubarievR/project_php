@@ -56,11 +56,7 @@ class CommentService implements CommentServiceInterface
      */
     public function getPaginatedList(int $page, Task $task): PaginationInterface
     {
-        return $this->paginator->paginate(
-            $this->commentRepository->queryAll($task),
-            $page,
-        //    CommentRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
+        return $this->paginator->paginate($this->commentRepository->queryAll($task), $page);
     }
 
     /**

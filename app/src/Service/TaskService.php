@@ -8,7 +8,6 @@ namespace App\Service;
 use App\Entity\Task;
 use App\Repository\TaskRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Knp\Component\Pager\Pagination\SlidingPagination;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -36,45 +35,21 @@ class TaskService implements TaskServiceInterface
      */
     private TaskRepository $taskRepository;
 
-
-    /**
-     * @param CategoryServiceInterface $categoryService
-     * @param PaginatorInterface $paginator
-     * @param TagServiceInterface $tagService
-     * @param TaskRepository $taskRepository
-     */
-    public function __construct(
-        CategoryServiceInterface $categoryService,
-        PaginatorInterface $paginator,
-        TagServiceInterface $tagService,
-        TaskRepository $taskRepository
-    ) {
+    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, TaskRepository $taskRepository)
+    {
         $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
         $this->taskRepository = $taskRepository;
     }
 
-
-    /**
-     * @param int $page
-     * @param array $filters
-     * @return PaginationInterface
-     */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
 
-        return $this->paginator->paginate(
-            $this->taskRepository->queryAll($filters),
-            $page,
-           // TaskRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
+        return $this->paginator->paginate($this->taskRepository->queryAll($filters), $page);
     }
-    /**
-     * @param int $page
-     * @return PaginationInterface
-     */
+
     public function getPaginatedAcceptList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(

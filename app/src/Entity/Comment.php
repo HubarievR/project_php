@@ -48,6 +48,7 @@ class Comment
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
+    #[Assert\Email]
     #[Assert\Length(min: 3, max: 255)]
     private ?string $email;
 
@@ -81,7 +82,7 @@ class Comment
     private ?Task $task;
 
     /**
-     * Getter for Id.
+     * Getter for id.
      */
     public function getId(): ?int
     {
@@ -109,7 +110,7 @@ class Comment
     }
 
     /**
-     * Getter for email.
+     * @return $this
      */
     public function getEmail(): ?string
     {
@@ -117,8 +118,6 @@ class Comment
     }
 
     /**
-     * Setter for email.
-     *
      * @return $this
      */
     public function setEmail(string $email): self
@@ -139,9 +138,7 @@ class Comment
     }
 
     /**
-     * Setter for created at.
-     *
-     * @param DateTimeImmutable|null $createdAt Created at
+     * Setter for created time.
      */
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
@@ -149,7 +146,7 @@ class Comment
     }
 
     /**
-     * Getter for content.
+     * @return $this
      */
     public function getContent(): ?string
     {
@@ -157,8 +154,6 @@ class Comment
     }
 
     /**
-     * Setter for content.
-     *
      * @return $this
      */
     public function setContent(string $content): self
@@ -168,17 +163,12 @@ class Comment
         return $this;
     }
 
-    /**
-     * Getter for task.
-     */
     public function getTask(): ?Task
     {
         return $this->task;
     }
 
     /**
-     * Setter for task.
-     *
      * @return $this
      */
     public function setTask(?task $task): self

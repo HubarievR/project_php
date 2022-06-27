@@ -8,7 +8,6 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Tag;
 use App\Entity\Task;
-use App\Entity\User;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -55,10 +54,6 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             foreach ($tags as $tag) {
                 $task->addTag($tag);
             }
-//            /** @var User $author */
-//            $author = $this->getRandomReference('users');
-//            $task->setAuthor($author);
-
             $task->setNews($this->faker->text(1000));
 
             return $task;

@@ -87,32 +87,17 @@ class Task
     #[ORM\JoinTable(name: 'tasks_tags')]
     private $tags;
 
-
     /**
      * Comment.
      */
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
     private $comment;
 
-    /**
-     * Constructor.
-     */
     #[Pure]
- public function __construct()
- {
-     $this->tags = new ArrayCollection();
- }
-//    /**
-//     * Author.
-//     *
-//     * @var User|null
-//     */
-//    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
-//    #[ORM\JoinColumn(nullable: false)]
-//    #[Assert\NotBlank]
-//    #[Assert\Type(User::class)]
-//    private $author;
-
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
     #[ORM\Column(type: 'text')]
     #[Assert\Type('string')]
     #[Assert\Length(min: 10, max: 3000)]
@@ -282,7 +267,6 @@ class Task
         return $this;
     }
 
-
 //    /**
 //     * @return User|null
 //     */
@@ -302,16 +286,12 @@ class Task
 //        return $this;
 //    }
 
-    /**
-     * @return string|null
-     */
     public function getNews(): ?string
     {
         return $this->news;
     }
 
     /**
-     * @param string $news
      * @return $this
      */
     public function setNews(string $news): self

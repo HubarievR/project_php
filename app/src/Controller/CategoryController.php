@@ -9,7 +9,6 @@ use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Form\Type\FormType;
 use App\Service\CategoryServiceInterface;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +21,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-
     /**
      * Define category service.
      *
@@ -37,10 +35,8 @@ class CategoryController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
-     * @param.CategoryServiceInterface.$categoryService
-     * @param.TranslatorInterface.$translator
+     * Constructor.
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -83,10 +79,6 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', ['category' => $category]);
     }
 
-
-    /**
-     * @param Category $category
-     */
     public function save(Category $category): void
     {
         if (null === $category->getId()) {

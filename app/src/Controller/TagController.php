@@ -73,12 +73,14 @@ class TagController extends AbstractController
         return $this->render('tag/show.html.twig', ['tag' => $tag]);
     }
 
-
     /**
+     * Create action.
+     *
      * @param Request $request
+     *
      * @return Response
      */
-    #[Route('/create', name: 'tag_create', methods: 'GET|POST', )]
+    #[Route('/create', name: 'tag_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
         $tag = new Tag();

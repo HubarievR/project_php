@@ -48,10 +48,10 @@ class CommentController extends AbstractController
     /**
      * Create action.
      *
-     * @param Request $request HTTP request
-     * @param Task $task Task entity
+     * @param Request $request
+     * @param Task    $task
      *
-     * @return Response HTTP response
+     * @return Response
      */
     #[Route('/{id}/create', name: 'comment_create', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
     public function create(Request $request, Task $task): Response
