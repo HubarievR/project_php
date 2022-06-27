@@ -8,7 +8,7 @@
     <h1>{{ 'title.tag_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
-        <h2><a href="/tag/create" title="{{ 'action.create_tag'|trans }}">  {{ 'action.create_tag'|trans }}</a></h2>
+        <h2><a href="{{ url('tag_create') }}" title="{{ 'action.create_tag'|trans }}">  {{ 'action.create_tag'|trans }}</a></h2>
 
         <table class="table table-striped">
             <thead>

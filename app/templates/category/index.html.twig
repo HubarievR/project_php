@@ -8,7 +8,7 @@
     <h1>{{ 'title.category_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
 
-        <h2><a href="/category/create" title="{{ 'action.create_category'|trans }}">  {{ 'action.create_category'|trans }}</a></h2>
+        <h2><a href="{{ url('category_create') }}" title="{{ 'action.create_category'|trans }}">  {{ 'action.create_category'|trans }}</a></h2>
 
         <table class="table table-striped">
             <thead>

@@ -115,7 +115,7 @@ class Task
 
     #[ORM\Column(type: 'text')]
     #[Assert\Type('string')]
-    #[Assert\Length(min: 1000, max: 3000)]
+    #[Assert\Length(min: 10, max: 3000)]
     private ?string $news;
 
     /**
