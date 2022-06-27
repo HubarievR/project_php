@@ -9,6 +9,7 @@ use App\Entity\Category;
 use App\Form\Type\CategoryType;
 use App\Form\Type\FormType;
 use App\Service\CategoryServiceInterface;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,18 +22,25 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
+
     /**
-     * Category service.
+     * Define category service.
+     *
+     * @param string $categoryService
      */
     private CategoryServiceInterface $categoryService;
 
     /**
-     * Translator.
+     * Define translator.
+     *
+     * @param string $translator
      */
     private TranslatorInterface $translator;
+
+
     /**
-     * @param CategoryServiceInterface $categoryService
-     * @param TranslatorInterface $translator
+     * @param.CategoryServiceInterface.$categoryService
+     * @param.TranslatorInterface.$translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -81,7 +89,7 @@ class CategoryController extends AbstractController
      */
     public function save(Category $category): void
     {
-        if (null == $category->getId()) {
+        if (null === $category->getId()) {
             $category->setCreatedAt(new \DateTimeImmutable());
         }
         $category->setUpdatedAt(new \DateTimeImmutable());
@@ -172,14 +180,14 @@ class CategoryController extends AbstractController
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Category $category): Response
     {
-//        if (!$this->categoryService->canBeDeleted($category)) {
-//            $this->addFlash(
-//                'warning',
-//                $this->translator->trans('message.category_contains_tasks')
-//            );
-//
-//            return $this->redirectToRoute('category_index');
-//        }
+        if (!$this->categoryService->canBeDeleted($category)) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.category_contains_tasks')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
 
         $form = $this->createForm(FormType::class, $category, [
             'method' => 'DELETE',

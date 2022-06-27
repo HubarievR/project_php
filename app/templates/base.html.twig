@@ -26,6 +26,12 @@
     </div>
     {% if is_granted('ROLE_ADMIN') %}
         <div class="btn_top">
+            <a href="{{ url('user_edit', {id: app.user.id}) }}">{{ 'action_change_password'|trans }}</a>
+        </div>
+        <div class="btn_top">
+            <a href="{{ url('user_editdata', {id: app.user.id}) }}">{{'action_change_data'|trans }}</a>
+        </div>
+        <div class="btn_top">
             <a href="/tag">{{ 'tag_page'|trans }}</a>
         </div>
         <div class="btn_top">

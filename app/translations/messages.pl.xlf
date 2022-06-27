@@ -283,6 +283,71 @@
         <target>Poczta</target>
     </trans-unit>
 
+    <trans-unit id="title.userdata_edit">
+        <source>title.userdata_edit</source>
+        <target>Zmiana poczty</target>
+    </trans-unit>
+
+    <trans-unit id="action_change_data">
+        <source>action_change_data</source>
+        <target>Zmień pocztę</target>
+    </trans-unit>
+
+    <trans-unit id="action_change_password">
+        <source>action_change_password</source>
+        <target>Zmień hasło</target>
+    </trans-unit>
+
+    <trans-unit id="title.user_edit">
+        <source>title.user_edit</source>
+        <target>Zmiana hasła</target>
+    </trans-unit>
+
+    <trans-unit id="label.new_password">
+        <source>label.new_password</source>
+        <target>Nowe hasło</target>
+    </trans-unit>
+
+    <trans-unit id="label.password.repeat">
+        <source>label.password.repeat</source>
+        <target>Powtórz nowe hasło</target>
+    </trans-unit>
+
+    <trans-unit id="message.edited_successfully">
+        <source>message.edited_successfully</source>
+        <target>Zmieniono pomyślnie.</target>
+    </trans-unit>
+
+    <trans-unit id="message.tag_contains_tasks">
+        <source>message.tag_contains_tasks</source>
+        <target>Tag został usunięty.</target>
+    </trans-unit>
+
+    <trans-unit id="message.category_contains_tasks">
+        <source>message.category_contains_tasks</source>
+        <target>Kategoria została usunięta.</target>
+    </trans-unit>
+
+    <trans-unit id="actions.details">
+        <source>actions.details</source>
+        <target>Idź do detali</target>
+    </trans-unit>
+
+    <trans-unit id="title.tag_details">
+        <source>title.tag_details</source>
+        <target>Detale taga</target>
+    </trans-unit>
+
+    <trans-unit id="title.task_edit">
+        <source>title.task_edit</source>
+        <target>Edycja wpisu</target>
+    </trans-unit>
+
+    <trans-unit id="message.task_not_found">
+        <source>message.task_not_found</source>
+        <target>Wpis nie został znaleziony.</target>
+    </trans-unit>
+
 </body>
 </file>
 </xliff>
