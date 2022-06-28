@@ -164,21 +164,21 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Builds the form.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Form-Type-TagType.html#method_configureOptions">configureOptions()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Configure Options.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/App-Form-Type-TagType.html#method_getBlockPrefix">getBlockPrefix()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>Getter for BlockPrefix.</dd>
 
         </dl>
 
@@ -206,16 +206,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Form/Type/TagType.php"><a href="files/src-form-type-tagtype.html"><abbr title="src/Form/Type/TagType.php">TagType.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Builds the form.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">buildForm</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$builder</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                <span class="phpdocumentor-signature__name">buildForm</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$builder</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This method is called for each type in the hierarchy starting from the
+top most type. Type extensions can further modify the form.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -224,20 +227,34 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\Form\FormBuilderInterface">FormBuilderInterface</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The form builder</p>
+</section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\App\Form\Type\FormTypeExtensionInterface::buildForm()">FormTypeExtensionInterface::buildForm()</abbr></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
@@ -258,17 +275,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Form/Type/TagType.php"><a href="files/src-form-type-tagtype.html"><abbr title="src/Form/Type/TagType.php">TagType.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Configure Options.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">configureOptions</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\OptionsResolver\OptionsResolver">OptionsResolver</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$resolver</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -276,7 +293,8 @@
                 : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Symfony\Component\OptionsResolver\OptionsResolver">OptionsResolver</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>ConfigureOptions</p>
+</section>
 
             </dd>
             </dl>
@@ -302,24 +320,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Form/Type/TagType.php"><a href="files/src-form-type-tagtype.html"><abbr title="src/Form/Type/TagType.php">TagType.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Getter for BlockPrefix.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getBlockPrefix</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>BlockPrefix</p>
+</section>
+
     
 </article>
             </section>
