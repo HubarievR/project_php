@@ -21,11 +21,18 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CommentRepository extends ServiceEntityRepository
 {
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Comment::class);
     }
 
+    /**
+     * @param Comment $entity
+     * @param bool    $flush
+     */
     public function add(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -35,6 +42,10 @@ class CommentRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @param Comment $entity
+     * @param bool    $flush
+     */
     public function remove(Comment $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -44,6 +55,11 @@ class CommentRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @param Task $task
+     *
+     * @return QueryBuilder
+     */
     public function queryAll(Task $task): QueryBuilder
     {
         $queryBuilder = $this->getOrCreateQueryBuilder()

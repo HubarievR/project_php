@@ -45,13 +45,16 @@ class Tag
     #[ORM\Column(type: 'string', length: 64)]
     private $title;
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * Getter for created time.
+     * @return DateTimeImmutable|null
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -59,6 +62,8 @@ class Tag
     }
 
     /**
+     * @param DateTimeImmutable $createdAt
+     *
      * @return $this
      */
     public function setCreatedAt(DateTimeImmutable $createdAt): self
@@ -69,7 +74,7 @@ class Tag
     }
 
     /**
-     * Getter for updated time.
+     * @return DateTimeImmutable|null
      */
     public function getUpdatedAt(): ?DateTimeImmutable
     {
@@ -77,6 +82,8 @@ class Tag
     }
 
     /**
+     * @param DateTimeImmutable $updatedAt
+     *
      * @return $this
      */
     public function setUpdatedAt(DateTimeImmutable $updatedAt): self
@@ -87,7 +94,7 @@ class Tag
     }
 
     /**
-     * Getter for title.
+     * @return string|null
      */
     public function getTitle(): ?string
     {
@@ -95,6 +102,8 @@ class Tag
     }
 
     /**
+     * @param string $title
+     *
      * @return $this
      */
     public function setTitle(string $title): self

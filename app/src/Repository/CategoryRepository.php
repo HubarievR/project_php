@@ -31,6 +31,9 @@ class CategoryRepository extends ServiceEntityRepository
      */
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+    /**
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Category::class);
@@ -48,6 +51,9 @@ class CategoryRepository extends ServiceEntityRepository
             ->orderBy('category.updatedAt', 'DESC');
     }
 
+    /**
+     * @param Category $category
+     */
     public function delete(Category $category): void
     {
         $this->_em->remove($category);
@@ -55,7 +61,7 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * Save entity.
+     * @param Category $category
      */
     public function save(Category $category): void
     {
@@ -63,6 +69,11 @@ class CategoryRepository extends ServiceEntityRepository
         $this->_em->flush();
     }
 
+    /**
+     * @param QueryBuilder|null $queryBuilder
+     *
+     * @return QueryBuilder
+     */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return $queryBuilder ?? $this->createQueryBuilder('category');

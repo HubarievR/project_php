@@ -82,7 +82,7 @@ class Comment
     private ?Task $task;
 
     /**
-     * Getter for id.
+     * @return int|null
      */
     public function getId(): ?int
     {
@@ -90,7 +90,7 @@ class Comment
     }
 
     /**
-     * Getter for nick.
+     * @return string|null
      */
     public function getNick(): ?string
     {
@@ -98,7 +98,7 @@ class Comment
     }
 
     /**
-     * Setter for nick.
+     * @param string $nick
      *
      * @return $this
      */
@@ -118,6 +118,8 @@ class Comment
     }
 
     /**
+     * @param string $email
+     *
      * @return $this
      */
     public function setEmail(string $email): self
@@ -128,9 +130,7 @@ class Comment
     }
 
     /**
-     * Getter for created at.
-     *
-     * @return DateTimeImmutable|null Created at
+     * @return DateTimeInterface|null
      */
     public function getCreatedAt(): ?DateTimeInterface
     {
@@ -138,7 +138,7 @@ class Comment
     }
 
     /**
-     * Setter for created time.
+     * @param DateTimeImmutable|null $createdAt
      */
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
@@ -154,6 +154,8 @@ class Comment
     }
 
     /**
+     * @param string $content
+     *
      * @return $this
      */
     public function setContent(string $content): self
@@ -163,12 +165,17 @@ class Comment
         return $this;
     }
 
+    /**
+     * @return Task|null
+     */
     public function getTask(): ?Task
     {
         return $this->task;
     }
 
     /**
+     * @param task|null $task
+     *
      * @return $this
      */
     public function setTask(?task $task): self

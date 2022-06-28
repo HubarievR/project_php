@@ -36,7 +36,8 @@ class CategoryController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
-     * Constructor.
+     * @param CategoryServiceInterface $categoryService
+     * @param TranslatorInterface      $translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -79,6 +80,9 @@ class CategoryController extends AbstractController
         return $this->render('category/show.html.twig', ['category' => $category]);
     }
 
+    /**
+     * @param Category $category
+     */
     public function save(Category $category): void
     {
         if (null === $category->getId()) {

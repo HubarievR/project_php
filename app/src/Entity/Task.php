@@ -93,6 +93,9 @@ class Task
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
     private $comment;
 
+    /**
+     *
+     */
     #[Pure]
     public function __construct()
     {
@@ -236,7 +239,7 @@ class Task
     }
 
     /**
-     * Add comment.
+     * @param Comment $comment
      *
      * @return $this
      */
@@ -251,7 +254,7 @@ class Task
     }
 
     /**
-     * Remove comment.
+     * @param Comment $comment
      *
      * @return $this
      */
@@ -285,13 +288,17 @@ class Task
 //
 //        return $this;
 //    }
-
+    /**
+     * @return string|null
+     */
     public function getNews(): ?string
     {
         return $this->news;
     }
 
     /**
+     * @param string $news
+     *
      * @return $this
      */
     public function setNews(string $news): self

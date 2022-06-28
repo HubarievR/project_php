@@ -45,6 +45,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     private UrlGeneratorInterface $urlGenerator;
 
+    /**
+     * @param UrlGeneratorInterface $urlGenerator
+     */
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
         $this->urlGenerator = $urlGenerator;
@@ -65,6 +68,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             && $request->isMethod('POST');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return Passport
+     */
     public function authenticate(Request $request): Passport
     {
         $email = $request->request->get('email', '');
