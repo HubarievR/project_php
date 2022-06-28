@@ -38,13 +38,13 @@
         <target>Show</target>
     </trans-unit>
 
-    <trans-unit id="title.task_list">
-        <source>title.task_list</source>
+    <trans-unit id="title.article_list">
+        <source>title.article_list</source>
         <target>Panel admin for Web newspaper </target>
     </trans-unit>
 
-    <trans-unit id="action.create_task">
-        <source>action.create_task</source>
+    <trans-unit id="action.create_article">
+        <source>action.create_article</source>
         <target>Create article</target>
     </trans-unit>
 
@@ -108,8 +108,8 @@
         <target>Record view #%id%</target>
     </trans-unit>
 
-    <trans-unit id="title.task_details">
-        <source>title.task_details</source>
+    <trans-unit id="title.article_details">
+        <source>title.article_details</source>
         <target>Article details</target>
     </trans-unit>
 
@@ -123,8 +123,8 @@
         <target>Content</target>
     </trans-unit>
 
-    <trans-unit id="title.task_delete">
-        <source>title.task_delete</source>
+    <trans-unit id="title.article_delete">
+        <source>title.article_delete</source>
         <target>Deleting article</target>
     </trans-unit>
 
@@ -233,8 +233,8 @@
         <target>Web newspaper</target>
     </trans-unit>
 
-    <trans-unit id="title.task_create">
-        <source>title.task_create</source>
+    <trans-unit id="title.article_create">
+        <source>title.article_create</source>
         <target>Creating article</target>
     </trans-unit>
 
@@ -318,13 +318,13 @@
         <target>Editted succesfully.</target>
     </trans-unit>
 
-    <trans-unit id="message.tag_contains_tasks">
-        <source>message.tag_contains_tasks</source>
+    <trans-unit id="message.tag_contains_articles">
+        <source>message.tag_contains_articles</source>
         <target>Tag was deleted.</target>
     </trans-unit>
 
-    <trans-unit id="message.category_contains_tasks">
-        <source>message.category_contains_tasks</source>
+    <trans-unit id="message.category_contains_articles">
+        <source>message.category_contains_articles</source>
         <target>Category was deleted.</target>
     </trans-unit>
 
@@ -338,13 +338,13 @@
         <target>Tag details</target>
     </trans-unit>
 
-    <trans-unit id="title.task_edit">
-        <source>title.task_edit</source>
+    <trans-unit id="title.article_edit">
+        <source>title.article_edit</source>
         <target>Editing article</target>
     </trans-unit>
 
-    <trans-unit id="message.task_not_found">
-        <source>message.task_not_found</source>
+    <trans-unit id="message.article_not_found">
+        <source>message.article_not_found</source>
         <target>Article was not found.</target>
     </trans-unit>
 

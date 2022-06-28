@@ -1,12 +1,12 @@
 <?php
 /**
- * Task type.
+ * Article type.
  */
 
 namespace App\Form\Type;
 
 use App\Entity\Category;
-use App\Entity\Task;
+use App\Entity\Article;
 use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -15,9 +15,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class TaskType.
+ * Class ArticleType.
  */
-class TaskType extends AbstractType
+class ArticleType extends AbstractType
 {
     /**
      * Tags data transformer.
@@ -113,7 +113,7 @@ class TaskType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Task::class]);
+        $resolver->setDefaults(['data_class' => Article::class]);
     }
 
     /**
@@ -123,6 +123,6 @@ class TaskType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'task';
+        return 'article';
     }
 }

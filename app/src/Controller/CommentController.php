@@ -6,7 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Task;
+use App\Entity\Article;
 use App\Form\Type\CommentType;
 use App\Service\CommentServiceInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -36,12 +36,12 @@ class CommentController extends AbstractController
     /**
      * Constructor.
      *
-     * @param CommentServiceInterface $taskService Task service
-     * @param TranslatorInterface     $translator  Translator
+     * @param CommentServiceInterface $articleService Article service
+     * @param TranslatorInterface     $translator     Translator
      */
-    public function __construct(CommentServiceInterface $taskService, TranslatorInterface $translator)
+    public function __construct(CommentServiceInterface $articleService, TranslatorInterface $translator)
     {
-        $this->commentService = $taskService;
+        $this->commentService = $articleService;
         $this->translator = $translator;
     }
 
@@ -49,16 +49,16 @@ class CommentController extends AbstractController
      * Create action.
      *
      * @param Request $request
-     * @param Task    $task
+     * @param Article $article
      *
      * @return Response
      */
     #[Route('/{id}/create', name: 'comment_create', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
-    public function create(Request $request, Task $task): Response
+    public function create(Request $request, Article $article): Response
     {
         $comment = new Comment();
-        $comment->setTask($task);
-        $form = $this->createForm(CommentType::class, $comment, ['action' => $this->generateUrl('comment_create', ['id' => $task->getId()])]);
+        $comment->setArticle($article);
+        $form = $this->createForm(CommentType::class, $comment, ['action' => $this->generateUrl('comment_create', ['id' => $article->getId()])]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -69,12 +69,12 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('task_show', ['id' => $task->getId()]);
+            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
         }
 
         return $this->render('comment/create.html.twig', [
             'form' => $form->createView(),
-            'task' => $task,
+            'article' => $article,
         ]);
     }
 
@@ -104,7 +104,7 @@ class CommentController extends AbstractController
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('article_index');
         }
 
         return $this->render('comment/delete.html.twig', [

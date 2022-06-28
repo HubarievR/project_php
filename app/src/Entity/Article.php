@@ -1,11 +1,11 @@
 <?php
 /**
- * Task entity.
+ * Article entity.
  */
 
 namespace App\Entity;
 
-use App\Repository\TaskRepository;
+use App\Repository\ArticleRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,13 +15,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Task.
+ * Class Article.
  *
  * @method createQueryBuilder(string $string)
  */
-#[ORM\Entity(repositoryClass: TaskRepository::class)]
-#[ORM\Table(name: 'tasks')]
-class Task
+#[ORM\Entity(repositoryClass: ArticleRepository::class)]
+#[ORM\Table(name: 'articles')]
+class Article
 {
     /**
      * Primary key.
@@ -83,13 +83,13 @@ class Task
      */
     #[Assert\Valid]
     #[ORM\ManyToMany(targetEntity: Tag::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
-    #[ORM\JoinTable(name: 'tasks_tags')]
+    #[ORM\JoinTable(name: 'articles_tags')]
     private $tags;
 
     /**
      * Comment.
      */
-    #[ORM\OneToMany(mappedBy: 'task', targetEntity: Comment::class)]
+    #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class)]
     private $comment;
 
     /**
@@ -247,7 +247,7 @@ class Task
     {
         if (!$this->comment->contains($comment)) {
             $this->comment[] = $comment;
-            $comment->setTask($this);
+            $comment->setArticle($this);
         }
 
         return $this;
@@ -264,8 +264,8 @@ class Task
     {
         if ($this->comment->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getTask() === $this) {
-                $comment->setTask(null);
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
             }
         }
 

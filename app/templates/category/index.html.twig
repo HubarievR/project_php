@@ -28,7 +28,7 @@
                     <td>{{ category.updatedAt|format_date('long') }}</td>
                     <td style="width: 30%;">{{ category.title }}</td>
                     <td id="operacje">
-                        <a class="btn-action" href="{{ url('task_index', {'filters.category_id' : category.id}) }}" title="{{ 'action.show'|trans }}">
+                        <a class="btn-action" href="{{ url('article_index', {'filters.category_id' : category.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show_all'|trans }}
                         </a>
                         <a class="btn-action" href="{{ url('category_edit', {id: category.id}) }}" title="{{ 'action.edit'|trans }}">

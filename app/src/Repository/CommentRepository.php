@@ -6,7 +6,7 @@
 namespace App\Repository;
 
 use App\Entity\Comment;
-use App\Entity\Task;
+use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
@@ -64,19 +64,19 @@ class CommentRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
-     * @param Task $task Task
+     * @param Article $article Article
      *
      * @return QueryBuilder Query builder
      */
-    public function queryAll(Task $task): QueryBuilder
+    public function queryAll(Article $article): QueryBuilder
     {
         $queryBuilder = $this->getOrCreateQueryBuilder()
             ->select(
                 'partial comment.{id, nick, email, createdAt, content}'
             )
             ->orderBy('comment.createdAt', 'DESC');
-        $queryBuilder->andWhere('comment.task = :task')
-            ->setParameter('task', $task);
+        $queryBuilder->andWhere('comment.article = :article')
+            ->setParameter('article', $article);
 
         return $queryBuilder;
     }

@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.task_details'|trans({'%id%': task.id|default('')}) }}
+    {{ 'title.article_details'|trans({'%id%': article.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ task.title({'%id%': task.id|default('')}) }}</h1>
-    {% if task is defined and task|length %}
+    <h1>{{ article.title({'%id%': article.id|default('')}) }}</h1>
+    {% if article is defined and article|length %}
 
         <div class="show_container">
             <div style="margin-left: 10%; margin-right: 10%;">
-                {{ task.news|markdown_to_html }}
+                {{ article.news|markdown_to_html }}
             </div>
 
-            <p>{{ 'label.created_at'|trans }}:&emsp;{{ task.createdAt|format_date('long') }} </p>
+            <p>{{ 'label.created_at'|trans }}:&emsp;{{ article.createdAt|format_date('long') }} </p>
 
             <dt>{{ 'label.category'|trans }}</dt>
-            <dd>{{  task.category.title }}</dd>
+            <dd>{{  article.category.title }}</dd>
             <dt>{{ 'label.tag'|trans}}</dt>
             <div class="tag_in_show">
-                {% for tag in task.tags %}
+                {% for tag in article.tags %}
                     {{tag.title}}
                 {% endfor %}
             </div>
@@ -63,13 +63,13 @@
         {% endif %}
 
         <p>
-            <a class="btn btn-outline-primary coment-btn" href="{{ url('comment_create', {id: task.id}) }}" title="{{ 'action.comment_create'|trans }}">
+            <a class="btn btn-outline-primary coment-btn" href="{{ url('comment_create', {id: article.id}) }}" title="{{ 'action.comment_create'|trans }}">
                 {{ 'action.comment_create'|trans }}
             </a>
         </p>
 
         <p style="text-align: center; margin: 20px;">
-            <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            <a href="{{ url('article_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>
         </p>

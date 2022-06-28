@@ -1,20 +1,20 @@
 <?php
 /**
- * Task fixtures.
+ * Article fixtures.
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Tag;
-use App\Entity\Task;
+use App\Entity\Article;
 use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
- * Class TaskFixtures.
+ * Class ArticleFixtures.
  */
-class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
+class ArticleFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
     /**
      * Load data.
@@ -29,22 +29,22 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             return;
         }
 
-        $this->createMany(100, 'tasks', function (int $i) {
-            $task = new Task();
-            $task->setTitle($this->faker->sentence);
-            $task->setCreatedAt(
+        $this->createMany(100, 'articles', function (int $i) {
+            $article = new Article();
+            $article->setTitle($this->faker->sentence);
+            $article->setCreatedAt(
                 DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
-            $task->setUpdatedAt(
+            $article->setUpdatedAt(
                 DateTimeImmutable::createFromMutable(
                     $this->faker->dateTimeBetween('-100 days', '-1 days')
                 )
             );
             /** @var Category $category */
             $category = $this->getRandomReference('categories');
-            $task->setCategory($category);
+            $article->setCategory($category);
 
             /** @var array<array-key, Tag> $tags */
             $tags = $this->getRandomReferences(
@@ -52,11 +52,11 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
                 $this->faker->numberBetween(0, 5)
             );
             foreach ($tags as $tag) {
-                $task->addTag($tag);
+                $article->addTag($tag);
             }
-            $task->setNews($this->faker->text(1000));
+            $article->setNews($this->faker->text(1000));
 
-            return $task;
+            return $article;
         });
 
         $this->manager->flush();

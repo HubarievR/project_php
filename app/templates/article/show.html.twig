@@ -1,31 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ 'title.task_details'|trans({'%id%': task.id|default('')}) }}
+    {{ 'title.article_details'|trans({'%id%': article.id|default('')}) }}
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'title.task_details'|trans({'%id%': task.id|default('')}) }}</h1>
-    {% if task is defined and task|length %}
+    <h1>{{ 'title.article_details'|trans({'%id%': article.id|default('')}) }}</h1>
+    {% if article is defined and article|length %}
         <div style="text-align: center; margin: 0 15% 0 15%">
         <dl class="dl-horizontal">
             <dt>{{ 'label.id'|trans }}</dt>
-            <dd>{{ task.id }}</dd>
+            <dd>{{ article.id }}</dd>
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ task.createdAt|format_date('long') }}</dd>
+            <dd>{{ article.createdAt|format_date('long') }}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ task.updatedAt|format_date('long') }}</dd>
+            <dd>{{ article.updatedAt|format_date('long') }}</dd>
             <dt>{{ 'label.title'|trans }}</dt>
-            <dd>{{  task.title }}</dd>
+            <dd>{{  article.title }}</dd>
             <dt>{{ 'label.category'|trans }}</dt>
-            <dd>{{  task.category.title }}</dd>
+            <dd>{{  article.category.title }}</dd>
             <dt>{{ 'label.tag'|trans}}</dt>
-            <dd>{% for tag in task.tags %}
+            <dd>{% for tag in article.tags %}
                     {{tag.title}}
                 {% endfor %}
             </dd>
             <dt>{{ 'label_news'|trans }}</dt>
-            <dd>{{ task.news|markdown_to_html }}</dd>
+            <dd>{{ article.news|markdown_to_html }}</dd>
         </dl>
         <h3>{{ 'title.comment_list'|trans }}</h3>
         {% if commentPagination is defined and commentPagination.items|length %}
@@ -74,19 +74,19 @@
         {% endif %}
 
         <p>
-            <a class="btn btn-outline-primary coment-btn" href="{{ url('comment_create', {id: task.id}) }}" title="{{ 'action.comment_create'|trans }}">
+            <a class="btn btn-outline-primary coment-btn" href="{{ url('comment_create', {id: article.id}) }}" title="{{ 'action.comment_create'|trans }}">
                 {{ 'action.comment_create'|trans }}
             </a>
         </p>
 
         <p>
-            <a href="{{ url('task_index') }}" title="{{ 'action.back_to_list'|trans }}">
+            <a href="{{ url('article_index') }}" title="{{ 'action.back_to_list'|trans }}">
                 {{ 'action.back_to_list'|trans }}
             </a>
         </p>
     {% else %}
         <p>
-            {{ 'message.task_not_found'|trans }}
+            {{ 'message.article_not_found'|trans }}
         </p>
     {% endif %}
     </div>

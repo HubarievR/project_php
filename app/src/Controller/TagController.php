@@ -1,6 +1,6 @@
 <?php
 /**
- * Task controller.
+ * Article controller.
  */
 
 namespace App\Controller;
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class TaskController.
+ * Class ArticleController.
  */
 #[Route('/tag')]
 class TagController extends AbstractController
@@ -151,7 +151,7 @@ class TagController extends AbstractController
         if (!$this->tagService->canBeDeleted($tag)) {
             $this->addFlash(
                 'warning',
-                $this->translator->trans('message.tag_contains_tasks')
+                $this->translator->trans('message.tag_contains_articles')
             );
 
             return $this->redirectToRoute('tag_index');

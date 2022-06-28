@@ -1,19 +1,19 @@
 <?php
 /**
- * Task service.
+ * Article service.
  */
 
 namespace App\Service;
 
-use App\Entity\Task;
-use App\Repository\TaskRepository;
+use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
- * Class TaskService.
+ * Class ArticleService.
  */
-class TaskService implements TaskServiceInterface
+class ArticleService implements ArticleServiceInterface
 {
     /**
      * Category service.
@@ -31,24 +31,24 @@ class TaskService implements TaskServiceInterface
     private TagServiceInterface $tagService;
 
     /**
-     * Task repository.
+     * Article repository.
      */
-    private TaskRepository $taskRepository;
+    private ArticleRepository $articleRepository;
 
     /**
      * Constructor.
      *
-     * @param CategoryServiceInterface $categoryService Category service
-     * @param PaginatorInterface       $paginator       Paginator
-     * @param TagServiceInterface      $tagService      Tag service
-     * @param TaskRepository           $taskRepository  Task repository
+     * @param CategoryServiceInterface $categoryService   Category service
+     * @param PaginatorInterface       $paginator         Paginator
+     * @param TagServiceInterface      $tagService        Tag service
+     * @param ArticleRepository        $articleRepository Article repository
      */
-    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, TaskRepository $taskRepository)
+    public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, ArticleRepository $articleRepository)
     {
         $this->categoryService = $categoryService;
         $this->paginator = $paginator;
         $this->tagService = $tagService;
-        $this->taskRepository = $taskRepository;
+        $this->articleRepository = $articleRepository;
     }
 
     /**
@@ -65,31 +65,31 @@ class TaskService implements TaskServiceInterface
     {
         $filters = $this->prepareFilters($filters);
 
-        return $this->paginator->paginate($this->taskRepository->queryAll($filters), $page);
+        return $this->paginator->paginate($this->articleRepository->queryAll($filters), $page);
     }
 
     /**
      * Save entity.
      *
-     * @param Task $task Task entity
+     * @param Article $article Article entity
      */
-    public function save(Task $task): void
+    public function save(Article $article): void
     {
-        $this->taskRepository->save($task);
+        $this->articleRepository->save($article);
     }
 
     /**
      * Delete entity.
      *
-     * @param Task $task Task entity
+     * @param Article $article Article entity
      */
-    public function delete(Task $task): void
+    public function delete(Article $article): void
     {
-        $this->taskRepository->delete($task);
+        $this->articleRepository->delete($article);
     }
 
     /**
-     * Prepare filters for the tasks list.
+     * Prepare filters for the articles list.
      *
      * @param array<string, int> $filters Raw filters from request
      *

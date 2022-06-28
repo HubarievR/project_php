@@ -73,13 +73,13 @@ class Comment
     private ?string $content;
 
     /**
-     * Task id.
+     * Article id.
      *
-     * @var task|null
+     * @var article|null
      */
-    #[ORM\ManyToOne(targetEntity: Task::class, fetch: 'EXTRA_LAZY', inversedBy: 'comment')]
+    #[ORM\ManyToOne(targetEntity: Article::class, fetch: 'EXTRA_LAZY', inversedBy: 'comment')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Task $task;
+    private ?Article $article;
 
     /**
      * Getter for Id.
@@ -180,25 +180,25 @@ class Comment
     }
 
     /**
-     * Getter for task.
+     * Getter for article.
      *
-     * @return Task|null Task
+     * @return Article|null Article
      */
-    public function getTask(): ?Task
+    public function getArticle(): ?Article
     {
-        return $this->task;
+        return $this->article;
     }
 
     /**
-     * Setter for task.
+     * Setter for article.
      *
-     * @param task|null $task Task
+     * @param article|null $article Article
      *
      * @return $this
      */
-    public function setTask(?task $task): self
+    public function setArticle(?article $article): self
     {
-        $this->task = $task;
+        $this->article = $article;
 
         return $this;
     }

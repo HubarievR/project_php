@@ -6,7 +6,7 @@
 namespace App\Service;
 
 use App\Entity\Comment;
-use App\Entity\Task;
+use App\Entity\Article;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
@@ -17,12 +17,12 @@ interface CommentServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int  $page Page number
-     * @param Task $task Task entity
+     * @param int     $page    Page number
+     * @param Article $article Article entity
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, Task $task): PaginationInterface;
+    public function getPaginatedList(int $page, Article $article): PaginationInterface;
 
     /**
      * Delete entity.

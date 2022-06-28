@@ -1,14 +1,14 @@
 <?php
 /**
- * Task controller.
+ * Article controller.
  */
 
 namespace App\Controller;
 
-use App\Entity\Task;
-use App\Form\Type\TaskType;
+use App\Entity\Article;
+use App\Form\Type\ArticleType;
 use App\Service\CommentServiceInterface;
-use App\Service\TaskServiceInterface;
+use App\Service\ArticleServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,15 +17,15 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class TaskController.
+ * Class ArticleController.
  */
-#[Route('/task')]
-class TaskController extends AbstractController
+#[Route('/article')]
+class ArticleController extends AbstractController
 {
     /**
-     * Task service.
+     * Article service.
      */
-    private TaskServiceInterface $taskService;
+    private ArticleServiceInterface $articleService;
 
     /**
      * Comment service.
@@ -40,13 +40,13 @@ class TaskController extends AbstractController
     /**
      * Construct.
      *
-     * @param TaskServiceInterface    $taskService    Task service
+     * @param ArticleServiceInterface $articleService Article service
      * @param TranslatorInterface     $translator     Translator
      * @param CommentServiceInterface $commentService Comment service
      */
-    public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator, CommentServiceInterface $commentService)
+    public function __construct(ArticleServiceInterface $articleService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {
-        $this->taskService = $taskService;
+        $this->articleService = $articleService;
         $this->translator = $translator;
         $this->commentService = $commentService;
     }
@@ -58,45 +58,45 @@ class TaskController extends AbstractController
      *
      * @return Response
      */
-    #[Route(name: 'task_index', methods: 'GET')]
+    #[Route(name: 'article_index', methods: 'GET')]
     public function index(Request $request): Response
     {
         $filters = $this->getFilters($request);
         /** @var User $user */
         //  $user = $this->getUser();
-        $pagination = $this->taskService->getPaginatedList(
+        $pagination = $this->articleService->getPaginatedList(
             $request->query->getInt('page', 1),
             $filters
         );
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('task/index.html.twig', ['pagination' => $pagination]);
+            return $this->render('article/index.html.twig', ['pagination' => $pagination]);
         }
 
-        return $this->render('task/index2.html.twig', ['pagination' => $pagination]);
+        return $this->render('article/index2.html.twig', ['pagination' => $pagination]);
     }
 
     /**
      * Show action.
      *
-     * @param Task    $task    Task entity
+     * @param Article $article Article entity
      * @param Request $request HTTP request
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
-    public function show(Task $task, Request $request): Response
+    #[Route('/{id}', name: 'article_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
+    public function show(Article $article, Request $request): Response
     {
         $commentPagination = $this->commentService->getPaginatedList(
             $request->query->getInt('page', 1),
-            $task
+            $article
         );
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            return $this->render('task/show.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
+            return $this->render('article/show.html.twig', ['article' => $article, 'commentPagination' => $commentPagination]);
         }
 
-        return $this->render('task/show2.html.twig', ['task' => $task, 'commentPagination' => $commentPagination]);
+        return $this->render('article/show2.html.twig', ['article' => $article, 'commentPagination' => $commentPagination]);
     }
 
     /**
@@ -106,25 +106,25 @@ class TaskController extends AbstractController
      *
      * @return Response
      */
-    #[Route('/create', name: 'task_create', methods: 'GET|POST')]
+    #[Route('/create', name: 'article_create', methods: 'GET|POST')]
     public function create(Request $request): Response
     {
-        $task = new Task();
-        $form = $this->createForm(TaskType::class, $task, ['action' => $this->generateUrl('task_create')]);
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article, ['action' => $this->generateUrl('article_create')]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->save($task);
+            $this->articleService->save($article);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('article_index');
         }
 
-        return $this->render('task/create.html.twig', [
+        return $this->render('article/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -133,33 +133,33 @@ class TaskController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Task    $task    Task entity
+     * @param Article $article Article entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    public function edit(Request $request, Task $task): Response
+    #[Route('/{id}/edit', name: 'article_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Article $article): Response
     {
-        $form = $this->createForm(TaskType::class, $task, [
+        $form = $this->createForm(ArticleType::class, $article, [
             'method' => 'PUT',
-            'action' => $this->generateUrl('task_edit', ['id' => $task->getId()]),
+            'action' => $this->generateUrl('article_edit', ['id' => $article->getId()]),
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->save($task);
+            $this->articleService->save($article);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.edited_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('article_index');
         }
 
-        return $this->render('task/edit.html.twig', [
+        return $this->render('article/edit.html.twig', [
             'form' => $form->createView(),
-            'task' => $task,
+            'article' => $article,
         ]);
     }
 
@@ -167,33 +167,33 @@ class TaskController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Task    $task    Task entity
+     * @param Article $article Article entity
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    public function delete(Request $request, Task $task): Response
+    #[Route('/{id}/delete', name: 'article_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request, Article $article): Response
     {
-        $form = $this->createForm(FormType::class, $task, [
+        $form = $this->createForm(FormType::class, $article, [
             'method' => 'DELETE',
-            'action' => $this->generateUrl('task_delete', ['id' => $task->getId()]),
+            'action' => $this->generateUrl('article_delete', ['id' => $article->getId()]),
         ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->taskService->delete($task);
+            $this->articleService->delete($article);
 
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.deleted_successfully')
             );
 
-            return $this->redirectToRoute('task_index');
+            return $this->redirectToRoute('article_index');
         }
 
-        return $this->render('task/delete.html.twig', [
+        return $this->render('article/delete.html.twig', [
             'form' => $form->createView(),
-            'task' => $task,
+            'article' => $article,
         ]);
     }
 
