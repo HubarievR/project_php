@@ -46,7 +46,9 @@ class Tag
     private $title;
 
     /**
-     * @return int|null
+     * Getter for Id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -54,7 +56,9 @@ class Tag
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * Getter for created at.
+     *
+     * @return DateTimeImmutable|null Created at
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -62,7 +66,9 @@ class Tag
     }
 
     /**
-     * @param DateTimeImmutable $createdAt
+     * Setter for created at.
+     *
+     * @param DateTimeImmutable $createdAt Created at
      *
      * @return $this
      */
@@ -74,7 +80,9 @@ class Tag
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * Getter for updated time.
+     *
+     * @return DateTimeImmutable|null Updated at
      */
     public function getUpdatedAt(): ?DateTimeImmutable
     {
@@ -82,7 +90,9 @@ class Tag
     }
 
     /**
-     * @param DateTimeImmutable $updatedAt
+     * Setter for updated at.
+     *
+     * @param DateTimeImmutable $updatedAt Updated at
      *
      * @return $this
      */
@@ -94,7 +104,9 @@ class Tag
     }
 
     /**
-     * @return string|null
+     * Getter for title.
+     *
+     * @return string|null Title
      */
     public function getTitle(): ?string
     {
@@ -102,7 +114,9 @@ class Tag
     }
 
     /**
-     * @param string $title
+     * Setter for title.
+     *
+     * @param string $title Title
      *
      * @return $this
      */

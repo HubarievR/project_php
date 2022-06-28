@@ -36,8 +36,10 @@ class CategoryController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
-     * @param CategoryServiceInterface $categoryService
-     * @param TranslatorInterface      $translator
+     * Construct.
+     *
+     * @param CategoryServiceInterface $categoryService Category service
+     * @param TranslatorInterface      $translator      Translator
      */
     public function __construct(CategoryServiceInterface $categoryService, TranslatorInterface $translator)
     {
@@ -81,7 +83,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @param Category $category
+     * Save action.
+     *
+     * @param Category $category Category
      */
     public function save(Category $category): void
     {

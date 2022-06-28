@@ -82,7 +82,9 @@ class Comment
     private ?Task $task;
 
     /**
-     * @return int|null
+     * Getter for Id.
+     *
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -90,7 +92,9 @@ class Comment
     }
 
     /**
-     * @return string|null
+     * Getter for nick.
+     *
+     * @return string|null Nick
      */
     public function getNick(): ?string
     {
@@ -98,9 +102,11 @@ class Comment
     }
 
     /**
-     * @param string $nick
+     * Setter for nick.
      *
-     * @return $this
+     * @param string $nick Nick
+     *
+     * @return Comment
      */
     public function setNick(string $nick): self
     {
@@ -118,9 +124,11 @@ class Comment
     }
 
     /**
-     * @param string $email
+     * Setter for email.
      *
-     * @return $this
+     * @param string $email Email
+     *
+     * @return Comment
      */
     public function setEmail(string $email): self
     {
@@ -130,7 +138,9 @@ class Comment
     }
 
     /**
-     * @return DateTimeInterface|null
+     * Getter for created at.
+     *
+     * @return DateTimeImmutable|null Created at
      */
     public function getCreatedAt(): ?DateTimeInterface
     {
@@ -138,7 +148,7 @@ class Comment
     }
 
     /**
-     * @param DateTimeImmutable|null $createdAt
+     * @param DateTimeImmutable|null $createdAt Created at
      */
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
@@ -146,7 +156,9 @@ class Comment
     }
 
     /**
-     * @return $this
+     * Getter for content.
+     *
+     * @return string|null Content
      */
     public function getContent(): ?string
     {
@@ -154,9 +166,11 @@ class Comment
     }
 
     /**
-     * @param string $content
+     * Setter for content.
      *
-     * @return $this
+     * @param string $content Content
+     *
+     * @return Comment
      */
     public function setContent(string $content): self
     {
@@ -166,7 +180,9 @@ class Comment
     }
 
     /**
-     * @return Task|null
+     * Getter for task.
+     *
+     * @return Task|null Task
      */
     public function getTask(): ?Task
     {
@@ -174,7 +190,9 @@ class Comment
     }
 
     /**
-     * @param task|null $task
+     * Setter for task.
+     *
+     * @param task|null $task Task
      *
      * @return $this
      */

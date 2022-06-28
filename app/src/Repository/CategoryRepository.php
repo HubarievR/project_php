@@ -32,7 +32,9 @@ class CategoryRepository extends ServiceEntityRepository
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
-     * @param ManagerRegistry $registry
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -52,7 +54,9 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Category $category
+     * Delete entity.
+     *
+     * @param Category $category Category entity
      */
     public function delete(Category $category): void
     {
@@ -61,7 +65,9 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Category $category
+     * Save entity.
+     *
+     * @param Category $category Category entity
      */
     public function save(Category $category): void
     {
@@ -70,9 +76,11 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param QueryBuilder|null $queryBuilder
+     * Get or create new query builder.
      *
-     * @return QueryBuilder
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {

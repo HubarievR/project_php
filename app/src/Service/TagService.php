@@ -21,7 +21,9 @@ class TagService implements TagServiceInterface
     private PaginatorInterface $paginator;
 
     /**
-     * @param Tag $tag
+     * Save entity.
+     *
+     * @param Tag $tag Tag entity
      */
     public function save(Tag $tag): void
     {
@@ -29,7 +31,9 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @param Tag $tag
+     * Delete entity.
+     *
+     * @param Tag $tag Tag entity
      */
     public function delete(Tag $tag): void
     {
@@ -37,9 +41,11 @@ class TagService implements TagServiceInterface
     }
 
     /**
-     * @param TagRepository      $tagRepository
-     * @param PaginatorInterface $paginator
-     * @param TaskRepository     $taskRepository
+     * Constructor.
+     *
+     * @param TagRepository      $tagRepository  Tag repository
+     * @param PaginatorInterface $paginator      Paginator
+     * @param TaskRepository     $taskRepository Task repository
      */
     public function __construct(TagRepository $tagRepository, PaginatorInterface $paginator, TaskRepository $taskRepository)
     {
@@ -54,9 +60,11 @@ class TagService implements TagServiceInterface
     private TaskRepository $taskRepository;
 
     /**
-     * @param int $page
+     * Get paginated list.
      *
-     * @return PaginationInterface
+     * @param int $page Page number
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {

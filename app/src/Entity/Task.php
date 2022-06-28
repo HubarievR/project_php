@@ -12,7 +12,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\QueryBuilder;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JetBrains\PhpStorm\Pure;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -90,13 +89,12 @@ class Task
     /**
      * Comment.
      */
-    #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comment::class)]
+    #[ORM\OneToMany(mappedBy: 'task', targetEntity: Comment::class)]
     private $comment;
 
     /**
-     *
+     * Constructor.
      */
-    #[Pure]
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -239,7 +237,9 @@ class Task
     }
 
     /**
-     * @param Comment $comment
+     * Add comment.
+     *
+     * @param Comment $comment Comment entity
      *
      * @return $this
      */
@@ -254,7 +254,9 @@ class Task
     }
 
     /**
-     * @param Comment $comment
+     * Remove comment.
+     *
+     * @param Comment $comment Comment entity
      *
      * @return $this
      */
@@ -288,8 +290,11 @@ class Task
 //
 //        return $this;
 //    }
+
     /**
-     * @return string|null
+     * Getter for news.
+     *
+     * @return string|null News
      */
     public function getNews(): ?string
     {
@@ -297,7 +302,9 @@ class Task
     }
 
     /**
-     * @param string $news
+     * Setter for news.
+     *
+     * @param string $news News
      *
      * @return $this
      */

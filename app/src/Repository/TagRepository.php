@@ -23,7 +23,9 @@ class TagRepository extends ServiceEntityRepository
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
     /**
-     * @param ManagerRegistry $registry
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -31,8 +33,8 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Tag  $entity
-     * @param bool $flush
+     * @param Tag  $entity Tag entity
+     * @param bool $flush  Bool flush
      */
     public function add(Tag $entity, bool $flush = true): void
     {
@@ -43,8 +45,10 @@ class TagRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Tag  $entity
-     * @param bool $flush
+     * Remove.
+     *
+     * @param Tag  $entity Tag entity
+     * @param bool $flush  Bool flush
      */
     public function remove(Tag $entity, bool $flush = true): void
     {

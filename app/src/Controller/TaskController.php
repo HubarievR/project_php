@@ -38,9 +38,11 @@ class TaskController extends AbstractController
     private TranslatorInterface $translator;
 
     /**
-     * @param TaskServiceInterface    $taskService
-     * @param TranslatorInterface     $translator
-     * @param CommentServiceInterface $commentService
+     * Construct.
+     *
+     * @param TaskServiceInterface    $taskService    Task service
+     * @param TranslatorInterface     $translator     Translator
+     * @param CommentServiceInterface $commentService Comment service
      */
     public function __construct(TaskServiceInterface $taskService, TranslatorInterface $translator, CommentServiceInterface $commentService)
     {

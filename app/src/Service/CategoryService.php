@@ -19,7 +19,9 @@ class CategoryService implements CategoryServiceInterface
     private PaginatorInterface $paginator;
 
     /**
-     * @param Category $category
+     * Save entity.
+     *
+     * @param Category $category Category entity
      */
     public function save(Category $category): void
     {
@@ -29,7 +31,9 @@ class CategoryService implements CategoryServiceInterface
     private TaskRepository $taskRepository;
 
     /**
-     * @param Category $category
+     * Delete entity.
+     *
+     * @param Category $category Category entity
      */
     public function delete(Category $category): void
     {
@@ -37,9 +41,11 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
-     * @param CategoryRepository $categoryRepository
-     * @param PaginatorInterface $paginator
-     * @param TaskRepository     $taskRepository
+     * Constructor.
+     *
+     * @param CategoryRepository $categoryRepository Category repository
+     * @param PaginatorInterface $paginator          Paginator
+     * @param TaskRepository     $taskRepository     Task repository
      */
     public function __construct(CategoryRepository $categoryRepository, PaginatorInterface $paginator, TaskRepository $taskRepository)
     {
@@ -49,9 +55,11 @@ class CategoryService implements CategoryServiceInterface
     }
 
     /**
-     * @param int $page
+     * Get paginated list.
      *
-     * @return PaginationInterface
+     * @param int $page Page number
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface
     {

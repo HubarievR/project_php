@@ -83,7 +83,9 @@ class Category
     }
 
     /**
-     * @return string|null
+     * Getter for title.
+     *
+     * @return string|null title
      */
     public function getTitle(): ?string
     {
@@ -91,7 +93,9 @@ class Category
     }
 
     /**
-     * @param string $title
+     * Setter for title.
+     *
+     * @param string $title Title
      *
      * @return $this
      */
@@ -103,7 +107,9 @@ class Category
     }
 
     /**
-     * @return DateTimeImmutable|null
+     * Getter for created at.
+     *
+     * @return DateTimeImmutable|null Created at
      */
     public function getCreatedAt(): ?DateTimeImmutable
     {
@@ -111,7 +117,9 @@ class Category
     }
 
     /**
-     * @param DateTimeImmutable $createdAt
+     * Setter for created at.
+     *
+     * @param DateTimeImmutable $createdAt Created at
      */
     public function setCreatedAt(DateTimeImmutable $createdAt): void
     {
@@ -119,7 +127,9 @@ class Category
     }
 
     /**
-     * @param DateTimeImmutable $updatedAt
+     * Setter for updated at.
+     *
+     * @param DateTimeImmutable $updatedAt Updated at
      */
     public function setUpdatedAt(DateTimeImmutable $updatedAt): void
     {

@@ -17,8 +17,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CommentType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * Builds the form.
+     *
+     * This method is called for each type in the hierarchy starting from the
+     * top most type. Type extensions can further modify the form.
+     *
+     * @param FormBuilderInterface $builder The form builder
+     * @param array<string, mixed> $options
+     *
+     * @see FormTypeExtensionInterface::buildForm()
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -52,7 +59,9 @@ class CommentType extends AbstractType
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * Configure Options.
+     *
+     * @param OptionsResolver $resolver ConfigureOptions
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
@@ -60,7 +69,9 @@ class CommentType extends AbstractType
     }
 
     /**
-     * @return string
+     * Getter for BlockPrefix.
+     *
+     * @return string BlockPrefix
      */
     public function getBlockPrefix(): string
     {

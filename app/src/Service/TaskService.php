@@ -36,10 +36,12 @@ class TaskService implements TaskServiceInterface
     private TaskRepository $taskRepository;
 
     /**
-     * @param CategoryServiceInterface $categoryService
-     * @param PaginatorInterface       $paginator
-     * @param TagServiceInterface      $tagService
-     * @param TaskRepository           $taskRepository
+     * Constructor.
+     *
+     * @param CategoryServiceInterface $categoryService Category service
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param TagServiceInterface      $tagService      Tag service
+     * @param TaskRepository           $taskRepository  Task repository
      */
     public function __construct(CategoryServiceInterface $categoryService, PaginatorInterface $paginator, TagServiceInterface $tagService, TaskRepository $taskRepository)
     {
@@ -50,30 +52,20 @@ class TaskService implements TaskServiceInterface
     }
 
     /**
-     * @param int   $page
-     * @param array $filters
+     * Get paginated list.
      *
-     * @return PaginationInterface
+     * @param int                $page    Page number
+     * @param array<string, int> $filters Filters array
+     *
+     * @return PaginationInterface<string, mixed> Paginated list
+     *
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface
     {
         $filters = $this->prepareFilters($filters);
 
         return $this->paginator->paginate($this->taskRepository->queryAll($filters), $page);
-    }
-
-    /**
-     * @param int $page
-     *
-     * @return PaginationInterface
-     */
-    public function getPaginatedAcceptList(int $page): PaginationInterface
-    {
-        return $this->paginator->paginate(
-            $this->taskRepository->queryToAccept(),
-            $page,
-            taskRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
     }
 
     /**

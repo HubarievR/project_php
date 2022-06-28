@@ -13,19 +13,25 @@ use App\Entity\Category;
 interface CategoryServiceInterface
 {
     /**
-     * @param Category $category
+     * Save entity.
+     *
+     * @param Category $category Category entity
      */
     public function save(Category $category): void;
 
     /**
-     * @param Category $category
+     * Delete entity.
+     *
+     * @param Category $category Category entity
      */
     public function delete(Category $category): void;
 
     /**
-     * @param Category $category
+     * Can Category be deleted?
      *
-     * @return bool
+     * @param Category $category Category entity
+     *
+     * @return bool Result
      */
     public function canBeDeleted(Category $category): bool;
 

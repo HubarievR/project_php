@@ -22,7 +22,9 @@ use Doctrine\Persistence\ManagerRegistry;
 class CommentRepository extends ServiceEntityRepository
 {
     /**
-     * @param ManagerRegistry $registry
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
@@ -30,8 +32,10 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Comment $entity
-     * @param bool    $flush
+     * Add.
+     *
+     * @param Comment $entity Comment entity
+     * @param bool    $flush  Bool flush
      */
     public function add(Comment $entity, bool $flush = false): void
     {
@@ -43,8 +47,10 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Comment $entity
-     * @param bool    $flush
+     * Remove.
+     *
+     * @param Comment $entity Comment entity
+     * @param bool    $flush  Bool flush
      */
     public function remove(Comment $entity, bool $flush = false): void
     {
@@ -56,9 +62,11 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Task $task
+     * Query all records.
      *
-     * @return QueryBuilder
+     * @param Task $task Task
+     *
+     * @return QueryBuilder Query builder
      */
     public function queryAll(Task $task): QueryBuilder
     {

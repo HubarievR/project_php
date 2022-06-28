@@ -14,10 +14,12 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface TaskServiceInterface
 {
     /**
-     * @param int   $page
-     * @param array $filters
+     * Get paginated list.
      *
-     * @return PaginationInterface
+     * @param int   $page    Number
+     * @param array $filters Filters
+     *
+     * @return PaginationInterface string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, array $filters = []): PaginationInterface;
 

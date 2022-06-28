@@ -13,19 +13,25 @@ use App\Entity\Tag;
 interface TagServiceInterface
 {
     /**
-     * @param Tag $tag
+     * Save entity.
+     *
+     * @param Tag $tag Tag entity
      */
     public function save(Tag $tag): void;
 
     /**
-     * @param Tag $tag
+     * Delete entity.
+     *
+     * @param Tag $tag Tag entity
      */
     public function delete(Tag $tag): void;
 
     /**
-     * @param Tag $tag
+     * Can Tag be deleted?
      *
-     * @return bool
+     * @param Tag $tag Tag entity
+     *
+     * @return bool Result
      */
     public function canBeDeleted(Tag $tag): bool;
 
